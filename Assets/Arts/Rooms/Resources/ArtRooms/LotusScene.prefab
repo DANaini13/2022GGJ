@@ -45,14 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsArrays:
   - desc: "\u7AF9\u5B50-\u524D\u666F"
-    pos: {x: 0, y: -1, z: -6}
-    posOffset: {x: 0, y: 0, z: 2}
+    pos: {x: 0, y: -1, z: -4}
+    posOffset: {x: 0, y: 0, z: 1}
     maxCount: 999
     probability: 100
-    scale_min: {x: 3, y: 1.1, z: 1}
-    scale_max: {x: 4, y: 1.4, z: 1}
-    between_min: 3
-    between_max: 6
+    scale_min: {x: 0.9, y: 0.9, z: 0.9}
+    scale_max: {x: 1.1, y: 1.1, z: 1.1}
+    between_min: 1
+    between_max: 5
     Array:
     - {fileID: 5084207164866818795, guid: e63a7c480b4f9b74ea8bfe18a30b3988, type: 3}
   maxDistance: 60
@@ -212,7 +212,7 @@ MonoBehaviour:
   prefabsArrays:
   - desc: "\u7AF9\u5B50-\u4E2D\u666F"
     pos: {x: 0, y: 0, z: 8}
-    posOffset: {x: 0, y: 0, z: 3}
+    posOffset: {x: 0, y: 0, z: 5}
     maxCount: 999
     probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 1}
@@ -282,8 +282,8 @@ MonoBehaviour:
     posOffset: {x: 0, y: 0, z: 3}
     maxCount: 999
     probability: 100
-    scale_min: {x: 1.2, y: 1.1, z: 1}
-    scale_max: {x: 1.5, y: 1.3, z: 1}
+    scale_min: {x: 0.9, y: 0.9, z: 1}
+    scale_max: {x: 1.1, y: 1.1, z: 1}
     between_min: 1
     between_max: 5
     Array:
@@ -446,7 +446,7 @@ MonoBehaviour:
   prefabsArrays:
   - desc: "\u7AF9\u5B50-\u4E2D\u666F"
     pos: {x: 0, y: 0, z: 8}
-    posOffset: {x: 0, y: 0, z: 3}
+    posOffset: {x: 0, y: 0, z: 5}
     maxCount: 999
     probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 1}
@@ -516,8 +516,8 @@ MonoBehaviour:
     posOffset: {x: 0, y: 0, z: 3}
     maxCount: 999
     probability: 100
-    scale_min: {x: 1.2, y: 1.1, z: 1}
-    scale_max: {x: 1.5, y: 1.3, z: 1}
+    scale_min: {x: 0.9, y: 0.9, z: 1}
+    scale_max: {x: 1.1, y: 1.1, z: 1}
     between_min: 1
     between_max: 5
     Array:
@@ -601,14 +601,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsArrays:
   - desc: "\u7AF9\u5B50-\u524D\u666F"
-    pos: {x: 0, y: -1, z: -6}
-    posOffset: {x: 0, y: 0, z: 2}
+    pos: {x: 0, y: -1, z: -4}
+    posOffset: {x: 0, y: 0, z: 1}
     maxCount: 999
     probability: 100
-    scale_min: {x: 3, y: 1.1, z: 1}
-    scale_max: {x: 4, y: 1.4, z: 1}
-    between_min: 3
-    between_max: 6
+    scale_min: {x: 0.9, y: 0.9, z: 0.9}
+    scale_max: {x: 1.1, y: 1.1, z: 1.1}
+    between_min: 1
+    between_max: 5
     Array:
     - {fileID: 5084207164866818795, guid: e63a7c480b4f9b74ea8bfe18a30b3988, type: 3}
   maxDistance: 60

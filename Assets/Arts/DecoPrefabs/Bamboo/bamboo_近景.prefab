@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 5084207164866818795}
   - component: {fileID: 3617355612549465887}
   m_Layer: 0
-  m_Name: "bamboo_\u524D\u666F"
+  m_Name: "bamboo_\u8FD1\u666F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,6 +242,12 @@ MonoBehaviour:
   - {fileID: 2678460681471965933}
   - {fileID: 4812518814578599710}
   texs:
-  - {fileID: 2800000, guid: 4b376da13f829c042a361f09f479bbbc, type: 3}
-  - {fileID: 2800000, guid: 1990ffab01fd0b444aacbc49bf3c60db, type: 3}
-  - {fileID: 2800000, guid: 0858c0caeab3bf74482bb1769e1b68fc, type: 3}
+  - {fileID: 2800000, guid: 75463e8980df32244a7b20316e2693a7, type: 3}
+  - {fileID: 2800000, guid: 5d7086297ff1b8c48842bb6810c4fe2a, type: 3}
+  - {fileID: 2800000, guid: 61b6483c936930b4a8561467ae776892, type: 3}
+  - {fileID: 2800000, guid: 6a05c1fcdfde4fa49abc2777faeca767, type: 3}
+  - {fileID: 2800000, guid: adf0ae208dae9834a94e46a69c2a685a, type: 3}
+  - {fileID: 2800000, guid: c1526a808fb85464d91802c362d258a7, type: 3}
+  - {fileID: 2800000, guid: e29b7598dffa88d4eb7c2eb717152b50, type: 3}
+  - {fileID: 2800000, guid: d6a1c30598ef3944db8ca5a275155926, type: 3}
+  - {fileID: 2800000, guid: 217e3211dad43ad4bb4c6803da0e3ec3, type: 3}
