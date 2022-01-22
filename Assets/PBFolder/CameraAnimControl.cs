@@ -7,6 +7,11 @@ public class CameraAnimControl : MonoBehaviour
 {
 
     public Vector3 defaultRotate;
+    [Header("相机旋转强度：")]
+    public float strength = 10;
+
+    [Header("时长：")]
+    public float time = 5;
 
 
     void Start()
@@ -18,8 +23,8 @@ public class CameraAnimControl : MonoBehaviour
 
     public void SetCamAnim()
     {
-        transform.DOLocalRotate(new Vector3(Random.Range(-10, 10f), Random.Range(-10, 10f), Random.Range(-10, 10f)), 5, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).OnComplete(()=> {
-            transform.DOLocalRotate(defaultRotate, 5).SetEase(Ease.Linear).OnComplete(()=> {
+        transform.DOLocalRotate(new Vector3(Random.Range(-strength, strength), Random.Range(-strength, strength), Random.Range(-strength, strength)), time, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).OnComplete(()=> {
+            transform.DOLocalRotate(defaultRotate, time).SetEase(Ease.Linear).OnComplete(()=> {
                 SetCamAnim();
 
             });
