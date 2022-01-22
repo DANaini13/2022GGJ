@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4252849359523238775}
   - component: {fileID: 4252849359523238776}
   - component: {fileID: 2341555624690550176}
+  - component: {fileID: 6436088435109635596}
   m_Layer: 0
   m_Name: player_change_tool
   m_TagString: tool
@@ -33,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 240, z: 0}
 --- !u!33 &4252849359523238774
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4252849359523238777}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4068373912626513877, guid: 53ab85c2cfaeadb4ca92cd64ca4402dc, type: 3}
 --- !u!23 &4252849359523238775
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a700928862c344c6097d3d71f81702bd, type: 2}
+  - {fileID: 2100000, guid: 6d090abbba02b1c4982c51bf098b1fc5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,3 +109,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4e06c0d07fa4e2e9364c53052c74c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &6436088435109635596
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4252849359523238777}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 7ea0b2d7d634b784c80f7192f58ae3f1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7ea0b2d7d634b784c80f7192f58ae3f1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
