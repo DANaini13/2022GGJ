@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -7,6 +6,8 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private BoxCollider box_collider;
+    public enum PlayerIdType {P1, P2}
+    public PlayerIdType player_id;
     public KeyCode jump_key;
     public KeyCode squat_key;
     public AnimationCurve jump_curve;
@@ -76,5 +77,18 @@ public class PlayerControl : MonoBehaviour
             squating = false;
             box_collider.size = original_size;
         }).SetUpdate(false);
+    }
+
+    private float hurt_cd = 0.5f;
+    public int hurt_amount = 1;
+    private float last_hurt_time = 0;
+    private void OnTriggerEnter(Collider other)
+    {
+        hurt_cd = 1.5f/MapController.instance.speed;
+        if (Time.fixedTime - last_hurt_time < hurt_cd) return;
+        if (player_id == PlayerIdType.P1)
+            PlayerDataUtil.Instance.P1Health -= hurt_amount;
+        else
+            PlayerDataUtil.Instance.P2Health -= hurt_amount;
     }
 }
