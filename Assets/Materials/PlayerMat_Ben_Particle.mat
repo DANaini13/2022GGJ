@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerMat_Ben
+  m_Name: PlayerMat_Ben_Particle
   m_Shader: {fileID: 4800000, guid: 93da283dc8913bb4b9ad5b8fb8fd5533, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaintTex:
-        m_Texture: {fileID: 2800000, guid: 77332b9779a799542844942e90199d29, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -90,5 +90,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 0}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 0}
+    - _MainColor: {r: 0.6981132, g: 0.30624774, b: 0.30624774, a: 0}
   m_BuildTextureStacks: []
