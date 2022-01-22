@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     private ParticleSystem stop_particle;
     public AudioClip step_audio;
+    public AudioClip grab_audio;
     public AudioSource audio_s;
     public ParticleSystem jump_over_particle;
     public AnimatorEvent animator_event;
@@ -156,6 +157,7 @@ public class PlayerControl : MonoBehaviour
         {
             catching_player = PlayerManager.instance.player_1;
         }
+        audio_s.PlayOneShot(grab_audio);
         catching_player.catched = true;
         DOVirtual.DelayedCall(catching_time, () =>
         {

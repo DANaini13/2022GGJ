@@ -865,6 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step_audio: {fileID: 8300000, guid: 16e159a589635504c96c5c065c001c5e, type: 3}
+  grab_audio: {fileID: 8300000, guid: 99c9aaed6d4dcdd4c9d7eadab88771d5, type: 3}
   audio_s: {fileID: 349590703}
   jump_over_particle: {fileID: 567923811}
   animator_event: {fileID: 945645748}
@@ -1426,6 +1427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step_audio: {fileID: 8300000, guid: 16e159a589635504c96c5c065c001c5e, type: 3}
+  grab_audio: {fileID: 8300000, guid: 99c9aaed6d4dcdd4c9d7eadab88771d5, type: 3}
   audio_s: {fileID: 1448003920}
   jump_over_particle: {fileID: 567316489}
   animator_event: {fileID: 441511441}
@@ -3590,7 +3592,7 @@ MonoBehaviour:
   score_add_duration: 0.5
   score_text: {fileID: 647397464}
   gameover_score_text: {fileID: 880374517}
-  health_max: 0
+  health_still: 0
 --- !u!114 &1384264589
 MonoBehaviour:
   m_ObjectHideFlags: 0
