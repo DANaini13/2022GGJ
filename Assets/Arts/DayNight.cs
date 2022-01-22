@@ -16,8 +16,8 @@ public class DayNight : MonoBehaviour
     void Awake()
     {
         ac = this.GetComponent<AmplifyColorEffect>();
-        ac.LutTexture = Resources.Load<Texture>("AmplifyColorTex/Day");
-        ac.LutBlendTexture = Resources.Load<Texture>("AmplifyColorTex/Night");
+        // ac.LutTexture = Resources.Load<Texture>("AmplifyColorTex/Day");
+        // ac.LutBlendTexture = Resources.Load<Texture>("AmplifyColorTex/Night");
         if (!isDay)
             ac.BlendAmount = 1;
     }
