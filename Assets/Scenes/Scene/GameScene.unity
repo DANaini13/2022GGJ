@@ -868,6 +868,7 @@ MonoBehaviour:
   grab_audio: {fileID: 8300000, guid: 99c9aaed6d4dcdd4c9d7eadab88771d5, type: 3}
   audio_s: {fileID: 349590703}
   jump_over_particle: {fileID: 567923811}
+  hit_ps: {fileID: 1730087086875077604, guid: e06eecc91399f3f4db4bb1ceaf8ce087, type: 3}
   animator_event: {fileID: 945645748}
   player_id: 1
   jump_key: 104
@@ -1430,6 +1431,7 @@ MonoBehaviour:
   grab_audio: {fileID: 8300000, guid: 99c9aaed6d4dcdd4c9d7eadab88771d5, type: 3}
   audio_s: {fileID: 1448003920}
   jump_over_particle: {fileID: 567316489}
+  hit_ps: {fileID: 1730087086875077604, guid: e06eecc91399f3f4db4bb1ceaf8ce087, type: 3}
   animator_event: {fileID: 441511441}
   player_id: 0
   jump_key: 97

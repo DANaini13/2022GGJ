@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     public AudioClip grab_audio;
     public AudioSource audio_s;
     public ParticleSystem jump_over_particle;
+    public ParticleSystem hit_ps;
     public AnimatorEvent animator_event;
     private BoxCollider box_collider;
     public enum PlayerIdType {P1, P2}
@@ -185,6 +186,8 @@ public class PlayerControl : MonoBehaviour
             }
             if(cols[i].transform.position.x < transform.position.x) continue;
             cols[i].GetComponent<BreakableCube>().OnBreak();
+            var ps = Instantiate(hit_ps, transform);
+            ps.Play();
             break;
         }
         DOVirtual.DelayedCall(attack_time, () =>

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SceneTool : MonoBehaviour
 {
     public AudioClip audio_clip;
+    public ParticleSystem pick_ps;
     private AudioSource _as;
 
     private void Awake()
@@ -14,7 +15,9 @@ public class SceneTool : MonoBehaviour
 
     public void PlayAudio()
     {
-        //_as.PlayOneShot(audio_clip);
+        var ps = Instantiate(pick_ps);
+        ps.transform.position = transform.position;
+        ps.Play();
     }
 }
 
