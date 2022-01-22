@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -823,7 +823,7 @@ MonoBehaviour:
   jump_key: 104
   squat_key: 106
   catch_key: 107
-  attack_key: 0
+  attack_key: 108
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   jump_key: 97
   squat_key: 115
   catch_key: 100
-  attack_key: 0
+  attack_key: 102
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -1298,7 +1298,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jump_time: 0.8
-  jump_height: 6
+  jump_height: 5
   jump_to_squat_time: 0.05
   squat_time: 1
   attack_time: 0.5
