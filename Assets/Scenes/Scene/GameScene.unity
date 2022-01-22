@@ -850,7 +850,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bbd3a6e932d41b88529d1756ebd885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stop_particle: {fileID: 0}
+  step_audio: {fileID: 8300000, guid: 16e159a589635504c96c5c065c001c5e, type: 3}
+  audio_s: {fileID: 349590703}
   jump_over_particle: {fileID: 567923811}
   animator_event: {fileID: 945645748}
   player_id: 1
@@ -949,6 +950,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!82 &349590703 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8850139213172661578, guid: 2b2ac398ebecf014f803e73e336e24d8, type: 3}
+  m_PrefabInstance: {fileID: 336471716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &438212604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,7 +1411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bbd3a6e932d41b88529d1756ebd885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stop_particle: {fileID: 0}
+  step_audio: {fileID: 8300000, guid: 16e159a589635504c96c5c065c001c5e, type: 3}
+  audio_s: {fileID: 1448003920}
   jump_over_particle: {fileID: 567316489}
   animator_event: {fileID: 441511441}
   player_id: 0
@@ -3537,6 +3544,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_1: {fileID: 554006596}
   player_2: {fileID: 336471719}
+--- !u!82 &1448003920 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8850139213172661578, guid: 5578b4fffa38e4641a8d9e9205ffd702, type: 3}
+  m_PrefabInstance: {fileID: 2146715809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1457111890
 GameObject:
   m_ObjectHideFlags: 0
