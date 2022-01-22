@@ -1,10 +1,13 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PlayerDataUtil: MonoBehaviour
 {
+    public GameObject game_over_img;
     public Text player_1_text;
     public Text player_2_text;
     
@@ -19,7 +22,13 @@ public class PlayerDataUtil: MonoBehaviour
     {
         if (game_over)
         {
-            Debug.Log("game over!!!!");
+            game_over = false;
+            Time.timeScale = 0;
+            game_over_img.SetActive(true);
+            DOVirtual.DelayedCall(3, () =>
+            {
+                SceneManager.LoadScene(0);
+            }).SetUpdate(true);
         }
     }
 
