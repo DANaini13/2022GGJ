@@ -17,12 +17,25 @@ public class PlayerControl : MonoBehaviour
     private void Awake()
     {
         box_collider = GetComponent<BoxCollider>();
+        idle_pos = transform.position;
     }
+
+    private Vector3 idle_pos = Vector3.zero;
 
     // Update is called once per frame
     void Update()
     {
         ListenInput();
+        if (jumping)
+        {
+            float current_index = (Time.fixedTime - jump_start_time)/jump_time;
+            transform.position = new Vector3(idle_pos.x, jump_curve.Evaluate(current_index) * jump_height + idle_pos.y, idle_pos.z);
+            if (current_index >= 1)
+            {
+                jumping = false;
+                transform.position = idle_pos;
+            }
+        }
     }
 
     private void ListenInput()
@@ -40,24 +53,14 @@ public class PlayerControl : MonoBehaviour
 
     private bool jumping = false;
     private bool squating = false;
+    private float jump_start_time = 0;
     public void Jump()
     {
-        if (jumping == true) return;
+        if (jumping) return;
         jumping = true;
         var pos_list = new List<Vector3>();
         var temp_pos = transform.position;
-        for (int i = 0; i <= 100; ++i)
-        {
-            var pos = transform.position;
-            float height = jump_curve.Evaluate(i / 100.0f) * jump_height + pos.y;
-            pos.y = height;
-            pos_list.Add(pos);
-        }
-        transform.DOPath(pos_list.ToArray(), jump_time).onComplete = () =>
-        {
-            jumping = false;
-            transform.position = temp_pos;
-        };
+        jump_start_time = Time.fixedTime;
     }
 
     public void Squat()
