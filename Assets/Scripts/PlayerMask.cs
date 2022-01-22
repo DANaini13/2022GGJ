@@ -38,6 +38,16 @@ public class PlayerMask : MonoBehaviour
     {
         (p1_trans, p2_trans) = (p2_trans, p1_trans);
         mask.following = mask.following == p1_trans ? p1_trans : p2_trans;
-        mask.camera_id = mask.following == p1_trans ? 1 : 0;
+        mask.camera_id = mask.following == p1_trans ? 0 : 1;
+        if (mask.following == p1_trans)
+        {
+            CameraUtil.GetCameraById(0).depth = 1;
+            CameraUtil.GetCameraById(1).depth = 0;
+        }
+        else
+        {
+             CameraUtil.GetCameraById(0).depth = 0;
+             CameraUtil.GetCameraById(1).depth = 1;
+        }
     }
 }

@@ -47,6 +47,8 @@ MonoBehaviour:
   - desc: "\u7AF9\u5B50-\u524D\u666F"
     pos: {x: 0, y: -1, z: -4}
     posOffset: {x: 0, y: 0, z: 1}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 0.9}
     scale_max: {x: 1.1, y: 1.1, z: 1.1}
     between_min: 1
@@ -133,6 +135,8 @@ MonoBehaviour:
   - desc: "\u5C71_\u8FD1"
     pos: {x: -20, y: -5, z: 70}
     posOffset: {x: 0, y: 0, z: 5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 1, y: 1, z: 1}
     scale_max: {x: 1.5, y: 1.5, z: 1}
     between_min: 10
@@ -142,6 +146,8 @@ MonoBehaviour:
   - desc: "\u5C71_\u4E2D"
     pos: {x: -20, y: 0, z: 100}
     posOffset: {x: 0, y: 0, z: 5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 1, y: 1, z: 1}
     scale_max: {x: 1.5, y: 1.5, z: 1}
     between_min: 10
@@ -151,6 +157,8 @@ MonoBehaviour:
   - desc: "\u5C71_\u8FDC"
     pos: {x: -20, y: 5, z: 150}
     posOffset: {x: 0, y: 0, z: 5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 1, y: 1, z: 1}
     scale_max: {x: 1.5, y: 1.5, z: 1}
     between_min: 10
@@ -205,12 +213,25 @@ MonoBehaviour:
   - desc: "\u7AF9\u5B50-\u4E2D\u666F"
     pos: {x: 0, y: 0, z: 8}
     posOffset: {x: 0, y: 0, z: 5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 1}
     scale_max: {x: 1.1, y: 1.1, z: 1}
     between_min: 1
     between_max: 2
     Array:
     - {fileID: 5084207164866818795, guid: 4beb237e3e6c7cd43915a1e7bf592f55, type: 3}
+  - desc: "\u5927\u4F5B"
+    pos: {x: 30, y: 0, z: 5}
+    posOffset: {x: 10, y: 0, z: 3}
+    maxCount: 1
+    probability: 5
+    scale_min: {x: 1, y: 1, z: 1}
+    scale_max: {x: 1, y: 1, z: 1}
+    between_min: 0
+    between_max: 0
+    Array:
+    - {fileID: 6066171563326113429, guid: b05a819f22c748c40a0379c31c1d3580, type: 3}
   maxDistance: 60
 --- !u!1 &753437306366955500
 GameObject:
@@ -259,6 +280,8 @@ MonoBehaviour:
   - desc: "\u7AF9\u5B50-\u8FD1\u666F"
     pos: {x: 0, y: 0, z: 3}
     posOffset: {x: 0, y: 0, z: 3}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 1}
     scale_max: {x: 1.1, y: 1.1, z: 1}
     between_min: 1
@@ -268,6 +291,8 @@ MonoBehaviour:
   - desc: "\u8349"
     pos: {x: 0, y: -0.5, z: 3}
     posOffset: {x: 0, y: 0, z: 0.5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 1}
     scale_max: {x: 1.1, y: 1.1, z: 1}
     between_min: 4
@@ -277,12 +302,25 @@ MonoBehaviour:
   - desc: "\u77F3\u5934"
     pos: {x: 0, y: -0.5, z: 1}
     posOffset: {x: 0, y: 0, z: 0}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.7, y: 0.7, z: 1}
     scale_max: {x: 1.3, y: 1.3, z: 1}
     between_min: 8
     between_max: 12
     Array:
     - {fileID: 6066171563326113429, guid: 97f2ec9fe0e91164bad82a3a594256c9, type: 3}
+  - desc: "\u706F\u7B3C"
+    pos: {x: 0, y: 0, z: 0}
+    posOffset: {x: 0, y: 0, z: 0}
+    maxCount: 999
+    probability: 10
+    scale_min: {x: 1, y: 1, z: 1}
+    scale_max: {x: 1, y: 1, z: 1}
+    between_min: 8
+    between_max: 16
+    Array:
+    - {fileID: 6066171563326113429, guid: a8d7a0bfca7c3284e9a9acac3fb1cea8, type: 3}
   maxDistance: 60
 --- !u!1 &943346951162886892
 GameObject:
@@ -331,6 +369,8 @@ MonoBehaviour:
   - desc: "\u5C71_\u8FD1"
     pos: {x: -20, y: -5, z: 70}
     posOffset: {x: 0, y: 0, z: 5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 1, y: 1, z: 1}
     scale_max: {x: 1.5, y: 1.5, z: 1}
     between_min: 10
@@ -340,6 +380,8 @@ MonoBehaviour:
   - desc: "\u5C71_\u4E2D"
     pos: {x: -20, y: 0, z: 100}
     posOffset: {x: 0, y: 0, z: 5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 1, y: 1, z: 1}
     scale_max: {x: 1.5, y: 1.5, z: 1}
     between_min: 10
@@ -349,6 +391,8 @@ MonoBehaviour:
   - desc: "\u5C71_\u8FDC"
     pos: {x: -20, y: 5, z: 150}
     posOffset: {x: 0, y: 0, z: 5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 1, y: 1, z: 1}
     scale_max: {x: 1.5, y: 1.5, z: 1}
     between_min: 10
@@ -403,12 +447,25 @@ MonoBehaviour:
   - desc: "\u7AF9\u5B50-\u4E2D\u666F"
     pos: {x: 0, y: 0, z: 8}
     posOffset: {x: 0, y: 0, z: 5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 1}
     scale_max: {x: 1.1, y: 1.1, z: 1}
     between_min: 1
     between_max: 2
     Array:
     - {fileID: 5084207164866818795, guid: 4beb237e3e6c7cd43915a1e7bf592f55, type: 3}
+  - desc: "\u5927\u4F5B"
+    pos: {x: 30, y: 0, z: 5}
+    posOffset: {x: 10, y: 0, z: 3}
+    maxCount: 1
+    probability: 5
+    scale_min: {x: 1, y: 1, z: 1}
+    scale_max: {x: 1, y: 1, z: 1}
+    between_min: 0
+    between_max: 0
+    Array:
+    - {fileID: 6066171563326113429, guid: b05a819f22c748c40a0379c31c1d3580, type: 3}
   maxDistance: 60
 --- !u!1 &4839174020944923246
 GameObject:
@@ -457,6 +514,8 @@ MonoBehaviour:
   - desc: "\u7AF9\u5B50-\u8FD1\u666F"
     pos: {x: 0, y: 0, z: 3}
     posOffset: {x: 0, y: 0, z: 3}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 1}
     scale_max: {x: 1.1, y: 1.1, z: 1}
     between_min: 1
@@ -466,6 +525,8 @@ MonoBehaviour:
   - desc: "\u8349"
     pos: {x: 0, y: -0.5, z: 3}
     posOffset: {x: 0, y: 0, z: 0.5}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 1}
     scale_max: {x: 1.1, y: 1.1, z: 1}
     between_min: 4
@@ -475,12 +536,25 @@ MonoBehaviour:
   - desc: "\u77F3\u5934"
     pos: {x: 0, y: -0.5, z: 1}
     posOffset: {x: 0, y: 0, z: 0}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.7, y: 0.7, z: 1}
     scale_max: {x: 1.3, y: 1.3, z: 1}
     between_min: 8
     between_max: 12
     Array:
     - {fileID: 6066171563326113429, guid: 97f2ec9fe0e91164bad82a3a594256c9, type: 3}
+  - desc: "\u706F\u7B3C"
+    pos: {x: 0, y: 0, z: 0}
+    posOffset: {x: 0, y: 0, z: 0}
+    maxCount: 999
+    probability: 10
+    scale_min: {x: 1, y: 1, z: 1}
+    scale_max: {x: 1, y: 1, z: 1}
+    between_min: 8
+    between_max: 16
+    Array:
+    - {fileID: 6066171563326113429, guid: a8d7a0bfca7c3284e9a9acac3fb1cea8, type: 3}
   maxDistance: 60
 --- !u!1 &5931339058657691173
 GameObject:
@@ -529,6 +603,8 @@ MonoBehaviour:
   - desc: "\u7AF9\u5B50-\u524D\u666F"
     pos: {x: 0, y: -1, z: -4}
     posOffset: {x: 0, y: 0, z: 1}
+    maxCount: 999
+    probability: 100
     scale_min: {x: 0.9, y: 0.9, z: 0.9}
     scale_max: {x: 1.1, y: 1.1, z: 1.1}
     between_min: 1

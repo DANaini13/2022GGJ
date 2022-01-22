@@ -1,48 +1,56 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class MapController : MonoBehaviour
 {
     public static MapController instance;
-    
-    
+    public GameObject empty_unit_prefab;
     public float unit_width = 60;
+    public int unit_count = 5;
+    public int empty_count = 0;
     public float speed = 1.0f;
-    private GameObject[] map_unit_list;
+    private GameObject[] unit_prefab_list;
+    private Queue<GameObject> current_unit_list;
     private void Awake()
     {
         instance = this;
-        map_unit_list = Resources.LoadAll<GameObject>("Prefabs/MapUnits");
-        int rand_index = Random.Range(0, map_unit_list.Length);
-        var prefab = map_unit_list[rand_index];
-        var first_unit = Instantiate(prefab, transform);
-        first_unit.transform.position = new Vector3(unit_width / 2.0f, 0, 0);
-        current_room = first_unit;
+        unit_prefab_list = Resources.LoadAll<GameObject>("Prefabs/MapUnits");
+        current_unit_list = new Queue<GameObject>();
+        // 先把list填满
+        int start_index = 1;
+        for (int i = 0; i < unit_count; i++)
+        {
+            GameObject prefab = null;
+            if (i < empty_count)
+            {
+                prefab = empty_unit_prefab;
+            }
+            else
+            {
+                int rand_index = Random.Range(0, unit_prefab_list.Length);
+                prefab = unit_prefab_list[rand_index];
+            }
+            var unit = Instantiate(prefab, transform);
+            unit.transform.position = new Vector3(unit_width * (i - start_index), 0, 0);
+            current_unit_list.Enqueue(unit);
+        }
     }
 
-    private GameObject current_room = null;
-    private GameObject next_room = null;
-
+    private float last_update_x = 0;
     public void Update()
     {
         var old_pos = transform.position;
         old_pos.x -= speed * Time.deltaTime;
         transform.position = old_pos;
-        if (next_room == null && current_room.transform.position.x <= 30)
-        {
-            int rand_index = Random.Range(0, map_unit_list.Length);
-            var prefab = map_unit_list[rand_index];
-            var unit = Instantiate(prefab, transform);
-            unit.transform.position = current_room.transform.position + new Vector3(60, 0, 0);
-            next_room = unit;
-        }
-
-        if (next_room != null && next_room.transform.position.x <= 0)
-        {
-            GameObject.Destroy(current_room);
-            current_room = next_room;
-            next_room = null;
-            
-        }
+        if (last_update_x - transform.position.x < unit_width) return;
+        var deleting = current_unit_list.Dequeue();
+        int rand_index = Random.Range(0, unit_prefab_list.Length);
+        var prefab = unit_prefab_list[rand_index];
+        var unit = Instantiate(prefab, transform);
+        unit.transform.position = new Vector3(deleting.transform.position.x + unit_width * unit_count, 0, 0);
+        current_unit_list.Enqueue(unit);
+        GameObject.Destroy(deleting);
+        last_update_x = transform.position.x;
     }
 }
