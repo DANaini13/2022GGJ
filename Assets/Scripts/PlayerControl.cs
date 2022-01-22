@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -7,6 +5,8 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private BoxCollider box_collider;
+    public enum PlayerIdType {P1, P2}
+    public PlayerIdType player_id;
     public KeyCode jump_key;
     public KeyCode squat_key;
     public AnimationCurve jump_curve;
