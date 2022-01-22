@@ -587,46 +587,46 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 6.2555966
-      outSlope: 6.2555966
+      time: 0.004547119
+      value: 0.03967285
+      inSlope: 4.1872497
+      outSlope: 4.1872497
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.05411318
-      value: 0.33851022
-      inSlope: 3.869566
-      outSlope: 3.869566
+      time: 0.17905802
+      value: 0.77039355
+      inSlope: 2.4493725
+      outSlope: 2.4493725
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.49999994
-      value: 0.99999905
-      inSlope: 0.031850398
-      outSlope: 0.031850398
+      time: 0.5017677
+      value: 1
+      inSlope: -0.05621192
+      outSlope: -0.05621192
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.9490814
-      value: 0.36237758
-      inSlope: -4.3146563
-      outSlope: -4.3146563
+      time: 0.83913165
+      value: 0.72203934
+      inSlope: -2.7419646
+      outSlope: -2.7419646
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: -0.0047187805
-      inSlope: -7.209478
-      outSlope: -7.209478
+      time: 0.99243164
+      value: 0.007659912
+      inSlope: -4.66001
+      outSlope: -4.66001
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -636,6 +636,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   jump_time: 0.8
   jump_height: 9
+  squat_time: 0.5
 --- !u!114 &1515999267
 MonoBehaviour:
   m_ObjectHideFlags: 0
