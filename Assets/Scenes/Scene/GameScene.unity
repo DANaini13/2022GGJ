@@ -579,8 +579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_id: 1
-  jump_key: 107
-  squat_key: 108
+  jump_key: 106
+  squat_key: 107
+  catch_key: 108
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -636,6 +637,10 @@ MonoBehaviour:
   jump_height: 9
   jump_to_squat_time: 0.2
   squat_time: 0.5
+  catching_cd: 1
+  catched: 0
+  catching_player: {fileID: 0}
+  catching_offset: {x: 1, y: 1, z: 1}
   idle_pos: {x: 0, y: 0, z: 0}
   hurt_amount: 1
 --- !u!65 &326464149
@@ -705,6 +710,7 @@ MonoBehaviour:
   player_id: 0
   jump_key: 97
   squat_key: 115
+  catch_key: 100
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -760,6 +766,10 @@ MonoBehaviour:
   jump_height: 9
   jump_to_squat_time: 0.2
   squat_time: 0.5
+  catching_cd: 1
+  catched: 0
+  catching_player: {fileID: 0}
+  catching_offset: {x: 1, y: 1, z: 1}
   idle_pos: {x: 0, y: 0, z: 0}
   hurt_amount: 1
 --- !u!1 &621208940

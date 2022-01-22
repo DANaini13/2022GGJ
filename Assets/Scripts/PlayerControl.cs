@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -10,11 +11,16 @@ public class PlayerControl : MonoBehaviour
     public PlayerIdType player_id;
     public KeyCode jump_key;
     public KeyCode squat_key;
+    public KeyCode catch_key;
     public AnimationCurve jump_curve;
     public float jump_time = 0.5f;
     public float jump_height = 1;
     public float jump_to_squat_time = 0.2f;
     public float squat_time = 0.5f;
+    public float catching_time = 1.0f;
+    public bool catched = false;
+    public PlayerControl catching_player = null;
+    public Vector3 catching_offset = new Vector3(-0.5f, 0, 0);
     private Animator animator;
 
     private void Awake()
@@ -29,6 +35,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (catched) return;
         CheckCallWalk();
         ListenInput();
         if (jumping)
@@ -44,6 +51,11 @@ public class PlayerControl : MonoBehaviour
         else
         {
             transform.position = idle_pos;
+        }
+
+        if (catching_player != null)
+        {
+            catching_player.transform.position = transform.position + catching_offset;
         }
     }
 
@@ -68,6 +80,9 @@ public class PlayerControl : MonoBehaviour
         }else if (Input.GetKeyDown(squat_key))
         {
             Squat();
+        }else if (Input.GetKeyDown(catch_key))
+        {
+            Catch();
         }
     }
 
@@ -99,6 +114,24 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    public void Catch()
+    {
+        if (player_id == PlayerIdType.P1)
+        {
+            catching_player = PlayerManager.instance.player_2;
+        }
+        else
+        {
+            catching_player = PlayerManager.instance.player_1;
+        }
+        catching_player.catched = true;
+        DOVirtual.DelayedCall(catching_time, () =>
+        {
+            catching_player.catched = false;
+            catching_player = null;
+        });
+    }
+
     private void DoSquat()
     {
         animator.SetTrigger("crouch");
@@ -118,6 +151,7 @@ public class PlayerControl : MonoBehaviour
     private float last_hurt_time = 0;
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Player")) return;
         hurt_cd = 2.1f/MapController.instance.speed;
         if (Time.fixedTime - last_hurt_time < hurt_cd) return;
         if (player_id == PlayerIdType.P1)
