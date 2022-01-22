@@ -14,11 +14,13 @@ public class PlayerControl : MonoBehaviour
     public float jump_time = 0.5f;
     public float jump_height = 1;
     public float squat_time = 0.5f;
+    private Animator animator;
 
     private void Awake()
     {
         box_collider = GetComponent<BoxCollider>();
         idle_pos = transform.position;
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     private Vector3 idle_pos = Vector3.zero;
@@ -26,6 +28,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckCallWalk();
         ListenInput();
         if (jumping)
         {
@@ -37,6 +40,17 @@ public class PlayerControl : MonoBehaviour
                 transform.position = idle_pos;
             }
         }
+    }
+
+    private float last_walk_time = 0;
+    private void CheckCallWalk()
+    {
+        if (jumping || squating) return;
+        float walk_duration = 1.0f / MapController.instance.speed;
+        if (Time.fixedTime - last_walk_time < walk_duration) return;
+        animator.SetFloat("speed", MapController.instance.speed/2.0f);
+        animator.SetTrigger("walk");
+        last_walk_time = Time.fixedTime;
     }
 
     private void ListenInput()
@@ -59,6 +73,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (jumping) return;
         jumping = true;
+        animator.SetTrigger("jump");
         var pos_list = new List<Vector3>();
         var temp_pos = transform.position;
         jump_start_time = Time.fixedTime;
@@ -68,6 +83,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (squating) return;
         squating = true;
+        animator.SetTrigger("crouch");
         var temp_size = box_collider.size;
         var original_size = box_collider.size;
         temp_size.y *= 0.5f;
@@ -84,11 +100,12 @@ public class PlayerControl : MonoBehaviour
     private float last_hurt_time = 0;
     private void OnTriggerEnter(Collider other)
     {
-        hurt_cd = 1.5f/MapController.instance.speed;
+        hurt_cd = 2.1f/MapController.instance.speed;
         if (Time.fixedTime - last_hurt_time < hurt_cd) return;
         if (player_id == PlayerIdType.P1)
             PlayerDataUtil.Instance.P1Health -= hurt_amount;
         else
             PlayerDataUtil.Instance.P2Health -= hurt_amount;
+        last_hurt_time = Time.fixedTime;
     }
 }
