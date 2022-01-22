@@ -10,6 +10,7 @@ public class MapController : MonoBehaviour
     public int unit_count = 5;
     public int empty_count = 0;
     public float speed = 1.0f;
+    public float map_add_speed_duration = 1.0f;
     private GameObject[] unit_prefab_list;
     private GameObject[] room_prefab_list;
     private Queue<GameObject> current_unit_list;
@@ -49,6 +50,7 @@ public class MapController : MonoBehaviour
     private float last_update_x = 0;
     public void Update()
     {
+        CheckAddSpeed();
         var old_pos = transform.position;
         old_pos.x -= speed * Time.deltaTime;
         transform.position = old_pos;
@@ -68,5 +70,13 @@ public class MapController : MonoBehaviour
         var room = Instantiate(room_prefab, transform);
         room.transform.position = unit.transform.position;
         current_room_list.Enqueue(room);
+    }
+
+    private float last_add_speed_time = 0;
+    private void CheckAddSpeed()
+    {
+        if (Time.fixedTime - last_add_speed_time < map_add_speed_duration) return;
+        last_add_speed_time = Time.fixedTime;
+        speed += 0.1f;
     }
 }

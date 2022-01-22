@@ -202,6 +202,10 @@ public class PlayerControl : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) return;
         if (other.gameObject.CompareTag("tool")) return;
+        if (!other.gameObject.CompareTag("block") && !other.gameObject.CompareTag("breakable"))
+        {
+            return;
+        }
         hurt_cd = 2.1f/MapController.instance.speed;
         if (Time.fixedTime - last_hurt_time < hurt_cd) return;
         if (player_id == PlayerIdType.P1)
