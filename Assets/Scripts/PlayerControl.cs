@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public ParticleSystem stop_particle;
+    private ParticleSystem stop_particle;
     public ParticleSystem jump_over_particle;
     public AnimatorEvent animator_event;
     private BoxCollider box_collider;
@@ -31,8 +31,12 @@ public class PlayerControl : MonoBehaviour
         box_collider = GetComponent<BoxCollider>();
         idle_pos = transform.position;
         animator = transform.GetChild(0).GetComponent<Animator>();
+        stop_particle = Resources.Load<ParticleSystem>("Prefabs/VFX_StepEffect");
         animator_event.on_clip_finished = clipName =>
         {
+            var ps = Instantiate(stop_particle, transform);
+            ps.transform.position = transform.position + new Vector3(0, 0.01f, 0);
+            ps.Play();
             stop_particle.Play();
         };
     }
@@ -76,7 +80,8 @@ public class PlayerControl : MonoBehaviour
         if (jumping || squating) return;
         float walk_duration = 1.0f / MapController.instance.speed;
         if (Time.fixedTime - last_walk_time < walk_duration) return;
-        animator.SetFloat("speed", MapController.instance.speed/2.0f);
+        float real_speed = MapController.instance.speed > 19 ? 19 : MapController.instance.speed;
+        animator.SetFloat("speed", real_speed/2.0f);
         animator.SetTrigger("walk");
         last_walk_time = Time.fixedTime;
     }
