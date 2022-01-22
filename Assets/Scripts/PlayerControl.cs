@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     public AnimationCurve jump_curve;
     public float jump_time = 0.5f;
     public float jump_height = 1;
+    public float jump_to_squat_time = 0.2f;
     public float squat_time = 0.5f;
     private Animator animator;
 
@@ -83,6 +84,19 @@ public class PlayerControl : MonoBehaviour
     {
         if (squating) return;
         squating = true;
+        if (jumping)
+        {
+            transform.DOMove(idle_pos, jump_to_squat_time).SetEase(Ease.Linear).onComplete = DoSquat;
+            jumping = false;
+        }
+        else
+        {
+            DoSquat();
+        }
+    }
+
+    private void DoSquat()
+    {
         animator.SetTrigger("crouch");
         var temp_size = box_collider.size;
         var original_size = box_collider.size;
