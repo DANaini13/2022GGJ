@@ -637,7 +637,7 @@ MonoBehaviour:
   jump_height: 9
   jump_to_squat_time: 0.2
   squat_time: 0.5
-  catching_cd: 1
+  catching_time: 1
   catched: 0
   catching_player: {fileID: 0}
   catching_offset: {x: 1, y: 1, z: 1}
@@ -766,7 +766,7 @@ MonoBehaviour:
   jump_height: 9
   jump_to_squat_time: 0.2
   squat_time: 0.5
-  catching_cd: 1
+  catching_time: 1
   catched: 0
   catching_player: {fileID: 0}
   catching_offset: {x: 1, y: 1, z: 1}

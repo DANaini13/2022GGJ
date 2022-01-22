@@ -152,6 +152,7 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) return;
+        if (other.gameObject.CompareTag("tool")) return;
         hurt_cd = 2.1f/MapController.instance.speed;
         if (Time.fixedTime - last_hurt_time < hurt_cd) return;
         if (player_id == PlayerIdType.P1)
