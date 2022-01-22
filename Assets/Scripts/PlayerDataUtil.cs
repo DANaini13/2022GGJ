@@ -14,6 +14,7 @@ public class PlayerDataUtil: MonoBehaviour
     public int counter = 0;
     public float score_add_duration = 1f;
     public Text score_text;
+    public Text gameover_score_text;
     
     static public PlayerDataUtil Instance;
 
@@ -31,6 +32,7 @@ public class PlayerDataUtil: MonoBehaviour
             game_over = false;
             Time.timeScale = 0;
             game_over_img.SetActive(true);
+            gameover_score_text.text = "SCORE: " + score.ToString();
             DOVirtual.DelayedCall(3, () =>
             {
                 SceneManager.LoadScene(0);
