@@ -87,7 +87,7 @@ Material:
     - _DissolveAmount: 0
     - _DstBlend: 0
     - _EmissivePower: 1
-    - _Frequency: 0
+    - _Frequency: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -98,7 +98,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RampIntensity: 1
-    - _ShakeIntensity: 0
+    - _ShakeIntensity: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
