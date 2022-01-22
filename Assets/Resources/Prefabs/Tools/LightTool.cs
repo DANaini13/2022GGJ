@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightTool : MonoBehaviour
+public class LightTool : SceneTool
 {
     public void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
-        GameObject.Destroy(gameObject);
+        PlayAudio();
         PlayerMask.instance.ChangeLight();
+        GameObject.Destroy(gameObject);
     }
 }
