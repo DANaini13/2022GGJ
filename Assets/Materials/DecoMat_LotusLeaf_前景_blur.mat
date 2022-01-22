@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "DecoMat_LotusLeaf_\u524D\u666F"
-  m_Shader: {fileID: 10721, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: "DecoMat_LotusLeaf_\u524D\u666F_blur"
+  m_Shader: {fileID: 4800000, guid: 8903474953a589a41b9591685cca33c2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -80,6 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AlphaPower: 1
     - _BumpScale: 1
     - _ColorPower: 2
     - _Cutoff: 0.5
@@ -91,8 +92,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LerpColor_FuckYiOuMax: 1
-    - _LerpColor_FuckYiOuMin: -1
+    - _LerpColor_FuckYiOuMax: 0
+    - _LerpColor_FuckYiOuMin: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -106,9 +107,9 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _BottomColor: {r: 0.33650768, g: 0.3584906, b: 0.3519644, a: 1}
+    - _BottomColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _CustomColor: {r: 0.26666668, g: 0.47058827, b: 0.37647063, a: 1}
+    - _CustomColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 0}
