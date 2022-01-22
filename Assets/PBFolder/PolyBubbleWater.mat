@@ -10,7 +10,7 @@ Material:
   m_Name: PolyBubbleWater
   m_Shader: {fileID: 4800000, guid: 06ea29b573574d84988086e42de10f9b, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
