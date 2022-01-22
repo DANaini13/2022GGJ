@@ -20,17 +20,22 @@ public class PlayerMask : MonoBehaviour
     {
         if (p1_mask) return;
         trans.eulerAngles = Vector3.zero;
+        trans.localScale = new Vector3(1, 1, 1);
         mask.camera_id = 0;
         mask.following = p1_trans;
+        CameraUtil.GetCameraById(0).depth = 1;
+        CameraUtil.GetCameraById(1).depth = 0;
         p1_mask = true;
     }
 
     private void SetMaskP2()
     {
         if (!p1_mask) return;
-        trans.eulerAngles = new Vector3(180, 0, 0);
+        trans.localScale = new Vector3(1, -1, 1);
         mask.camera_id = 1;
         mask.following = p2_trans;
+        CameraUtil.GetCameraById(0).depth = 0;
+        CameraUtil.GetCameraById(1).depth = 1;
         p1_mask = false;
     }
 
