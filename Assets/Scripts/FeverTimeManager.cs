@@ -8,7 +8,7 @@ public class FeverTimeManager: MonoBehaviour
     public List<Camera> camera_list;
     private List<Color> camera_bg_color_list = new List<Color>();
     public List<GameObject> scene_effects;
-    public ParticleSystem fever_ps;
+    public List<ParticleSystem> fever_ps_list;
     private List<bool> scene_effect_status = new List<bool>();
 
     public static FeverTimeManager instance;
@@ -16,6 +16,11 @@ public class FeverTimeManager: MonoBehaviour
     public void Awake()
     {
         instance = this;
+    }
+
+    public void Start()
+    {
+        Shader.SetGlobalFloat("AlphaPower", 0);
     }
 
     private bool fever_time = false;
@@ -32,14 +37,13 @@ public class FeverTimeManager: MonoBehaviour
             scene_effect.SetActive(false);
         }
         // 开启特效shader
-        float dissolve_amount = 1;
+        float dissolve_amount = 0;
         transform.DOScaleX(1, 0.05f).SetLoops(32).onStepComplete = () =>
         {
-            Shader.SetGlobalFloat("_AlphaPower", dissolve_amount);
+            Shader.SetGlobalFloat("AlphaPower", dissolve_amount);
             dissolve_amount = dissolve_amount < 0 ? 0 : dissolve_amount;
             dissolve_amount = dissolve_amount > 1 ? 1 : dissolve_amount;
-            //Debug.Log(dissolve_amount);
-            dissolve_amount -= 0.0334f;
+            dissolve_amount += 0.0334f;
         };
         // 缓存相机的bg颜色，设置相机的bg颜色到黑色
         camera_bg_color_list.Clear();
@@ -49,7 +53,10 @@ public class FeverTimeManager: MonoBehaviour
             camera.backgroundColor = Color.black;
         }
         // 播放欢乐粒子
-        fever_ps.Play();
+        foreach (var fever_ps in fever_ps_list)
+        {
+            fever_ps.Play();
+        }
     }
 
     public void ExitFeverTime()
@@ -64,14 +71,14 @@ public class FeverTimeManager: MonoBehaviour
             ++index;
         }
         // 关闭特效shader
-        float dissolve_amount = 0;
+        
+        float dissolve_amount = 1;
         transform.DOScaleX(1, 0.05f).SetLoops(32).onStepComplete = () =>
         {
-            Shader.SetGlobalFloat("_AlphaPower", dissolve_amount);
+            Shader.SetGlobalFloat("AlphaPower", dissolve_amount);
             dissolve_amount = dissolve_amount < 0 ? 0 : dissolve_amount;
             dissolve_amount = dissolve_amount > 1 ? 1 : dissolve_amount;
-            //Debug.Log(dissolve_amount);
-            dissolve_amount += 0.0334f;
+            dissolve_amount -= 0.0334f;
         };
         // 恢复相机bg颜色
         index = 0;
@@ -81,7 +88,10 @@ public class FeverTimeManager: MonoBehaviour
             ++index;
         }
         // 停止欢乐粒子
-        fever_ps.Stop();
+        foreach (var fever_ps in fever_ps_list)
+        {
+            fever_ps.Stop();
+        }
     }
 
     public void ChangeFeverTime()
