@@ -103,7 +103,7 @@ public class PlayerControl : MonoBehaviour
         jump_start_time = Time.fixedTime;
     }
 
-    private bool jump_to_squat = true;
+    private bool jump_to_squat = false;
     public void Squat()
     {
         if (jumping)
@@ -122,6 +122,7 @@ public class PlayerControl : MonoBehaviour
 
     public void Catch()
     {
+        if (catching_player != null) return;
         if (player_id == PlayerIdType.P1)
         {
             catching_player = PlayerManager.instance.player_2;
@@ -141,6 +142,7 @@ public class PlayerControl : MonoBehaviour
     private void DoSquat()
     {
         squating = true;
+        jump_to_squat = false;
         animator.SetFloat("crouchSpeed", 1.0f/squat_time * 0.5f);
         animator.SetTrigger("crouch");
         var temp_size = box_collider.size;
