@@ -8,6 +8,8 @@ public class PrefabArrays
     public string desc;
     public Vector3 pos;
     public Vector3 posOffset;
+    public int maxCount = 999;
+    public int probability = 100;
     public Vector3 scale_min = Vector3.one;
     public Vector3 scale_max = Vector3.one;
     public float between_min, between_max;
@@ -32,13 +34,17 @@ public class PrefabArrays
 public class SceneGenerator : MonoBehaviour
 {
     public PrefabArrays[] prefabsArrays;
-    public float maxDistance = 20f;
+    public float maxDistance = 60f;
 
     void Awake()
     {
         for (int i = 0; i < prefabsArrays.Length; i++)
         {
+            if (Random.Range(0, 100) > prefabsArrays[i].probability)
+                continue;
+
             Vector3 lastPos = Vector3.zero;
+            int count = 0;
             while (true)
             {
                 Transform prefab = Instantiate(prefabsArrays[i].Array[Random.Range(0, prefabsArrays[i].Array.Length)]).transform;
@@ -55,6 +61,9 @@ public class SceneGenerator : MonoBehaviour
                 Vector3 sclae_max = prefabsArrays[i].scale_max;
                 prefab.localScale = new Vector3(Random.Range(scale_min.x, sclae_max.x), Random.Range(scale_min.y, sclae_max.y), Random.Range(scale_min.z, sclae_max.z));
 
+                count++;
+                if (count >= prefabsArrays[i].maxCount)
+                    break;
                 if (lastPos.x >= maxDistance)
                     break;
             }
