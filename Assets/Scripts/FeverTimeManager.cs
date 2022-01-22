@@ -8,6 +8,7 @@ public class FeverTimeManager: MonoBehaviour
     public List<Camera> camera_list;
     private List<Color> camera_bg_color_list = new List<Color>();
     public List<GameObject> scene_effects;
+    public ParticleSystem fever_ps;
     private List<bool> scene_effect_status = new List<bool>();
 
     public static FeverTimeManager instance;
@@ -47,6 +48,8 @@ public class FeverTimeManager: MonoBehaviour
             camera_bg_color_list.Add(camera.backgroundColor);
             camera.backgroundColor = Color.black;
         }
+        // 播放欢乐粒子
+        fever_ps.Play();
     }
 
     public void ExitFeverTime()
@@ -77,6 +80,8 @@ public class FeverTimeManager: MonoBehaviour
             camera.backgroundColor = camera_bg_color_list[index];
             ++index;
         }
+        // 停止欢乐粒子
+        fever_ps.Stop();
     }
 
     public void ChangeFeverTime()
