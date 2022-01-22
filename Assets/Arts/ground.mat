@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ground
-  m_Shader: {fileID: 4800000, guid: 8903474953a589a41b9591685cca33c2, type: 3}
+  m_Shader: {fileID: 4800000, guid: cd4459df1dd417b42a74ff16872e0c5c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
