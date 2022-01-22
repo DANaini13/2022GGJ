@@ -211,14 +211,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsArrays:
   - desc: "\u7AF9\u5B50-\u4E2D\u666F"
-    pos: {x: 0, y: 0, z: 8}
-    posOffset: {x: 0, y: 0, z: 3}
+    pos: {x: 0, y: 0, z: 5}
+    posOffset: {x: 0, y: 0, z: 1}
     maxCount: 999
     probability: 100
-    scale_min: {x: 0.9, y: 0.9, z: 1}
-    scale_max: {x: 1.1, y: 1.1, z: 1}
+    scale_min: {x: 1, y: 1, z: 1}
+    scale_max: {x: 1.2, y: 1.2, z: 1}
     between_min: 1
-    between_max: 2
+    between_max: 3
     Array:
     - {fileID: 5084207164866818795, guid: 4beb237e3e6c7cd43915a1e7bf592f55, type: 3}
   - desc: "\u5927\u4F5B"
@@ -232,6 +232,17 @@ MonoBehaviour:
     between_max: 0
     Array:
     - {fileID: 6066171563326113429, guid: b05a819f22c748c40a0379c31c1d3580, type: 3}
+  - desc: "\u7AF9\u5B50-\u4E2D\u666F"
+    pos: {x: 0, y: 0, z: 7}
+    posOffset: {x: 0, y: 0, z: 1}
+    maxCount: 999
+    probability: 100
+    scale_min: {x: 1, y: 1, z: 1}
+    scale_max: {x: 1.2, y: 1.2, z: 1}
+    between_min: 1
+    between_max: 3
+    Array:
+    - {fileID: 5084207164866818795, guid: 1b2ed6841df68e74488a50ba220e13b9, type: 3}
   maxDistance: 60
 --- !u!1 &753437306366955500
 GameObject:
@@ -445,14 +456,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsArrays:
   - desc: "\u7AF9\u5B50-\u4E2D\u666F"
-    pos: {x: 0, y: 0, z: 8}
-    posOffset: {x: 0, y: 0, z: 3}
+    pos: {x: 0, y: 0, z: 5}
+    posOffset: {x: 0, y: 0, z: 1}
     maxCount: 999
     probability: 100
-    scale_min: {x: 0.9, y: 0.9, z: 1}
-    scale_max: {x: 1.1, y: 1.1, z: 1}
+    scale_min: {x: 1, y: 1, z: 1}
+    scale_max: {x: 1.2, y: 1.2, z: 1}
     between_min: 1
-    between_max: 2
+    between_max: 3
     Array:
     - {fileID: 5084207164866818795, guid: 4beb237e3e6c7cd43915a1e7bf592f55, type: 3}
   - desc: "\u5927\u4F5B"
@@ -466,6 +477,17 @@ MonoBehaviour:
     between_max: 0
     Array:
     - {fileID: 6066171563326113429, guid: b05a819f22c748c40a0379c31c1d3580, type: 3}
+  - desc: "\u7AF9\u5B50-\u4E2D\u666F"
+    pos: {x: 0, y: 0, z: 7}
+    posOffset: {x: 0, y: 0, z: 1}
+    maxCount: 999
+    probability: 100
+    scale_min: {x: 1, y: 1, z: 1}
+    scale_max: {x: 1.2, y: 1.2, z: 1}
+    between_min: 1
+    between_max: 3
+    Array:
+    - {fileID: 5084207164866818795, guid: 1b2ed6841df68e74488a50ba220e13b9, type: 3}
   maxDistance: 60
 --- !u!1 &4839174020944923246
 GameObject:
