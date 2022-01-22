@@ -74,7 +74,7 @@ Shader "DefaultBlendPar"
 }
 /*ASEBEGIN
 Version=18912
-0;229;1916;737;1142;209.5;1;True;True
+7;201;1916;737;1141.964;209.4923;1;True;True
 Node;AmplifyShaderEditor.VertexColorNode;2;-649,221.5;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SamplerNode;5;-785,27.5;Inherit;True;Property;_MainTex;MainTex;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;6;-563,446.5;Inherit;False;Property;_ColorPower;ColorPower;2;0;Create;True;0;0;0;False;0;False;1;0;0;10;0;1;FLOAT;0
@@ -89,4 +89,4 @@ WireConnection;7;9;2;4
 WireConnection;7;10;5;4
 WireConnection;7;13;4;0
 ASEEND*/
-//CHKSM=76FAAE01A7FF367CF19F3EA6DC8528BFADED91CF
+//CHKSM=FABBD648251837D4F34500331A86DAB6D3B5910D
