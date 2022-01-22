@@ -14,8 +14,7 @@ public class SceneTool : MonoBehaviour
 
     public void PlayAudio()
     {
-        _as.PlayOneShot(audio_clip);
-        Debug.Log("sfsdfsdf");
+        //_as.PlayOneShot(audio_clip);
     }
 }
 
