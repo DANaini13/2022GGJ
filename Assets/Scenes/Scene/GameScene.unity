@@ -1298,7 +1298,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jump_time: 0.8
-  jump_height: 5
+  jump_height: 6
   jump_to_squat_time: 0.05
   squat_time: 1
   attack_time: 0.5
@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask: {fileID: 1814360280}
   p1_trans: {fileID: 554006594}
-  p2_trans: {fileID: 0}
+  p2_trans: {fileID: 336471717}
 --- !u!1 &628911656
 GameObject:
   m_ObjectHideFlags: 0
