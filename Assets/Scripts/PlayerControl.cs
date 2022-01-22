@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -5,16 +6,17 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    private BoxCollider box_collider;
     public KeyCode jump_key;
     public KeyCode squat_key;
     public AnimationCurve jump_curve;
     public float jump_time = 0.5f;
     public float jump_height = 1;
-    
-    // Start is called before the first frame update
-    void Start()
+    public float squat_time = 0.5f;
+
+    private void Awake()
     {
-        
+        box_collider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -34,7 +36,6 @@ public class PlayerControl : MonoBehaviour
         {
             Squat();
         }
-        Debug.Log(jump_curve.Evaluate(0.3f));
     }
 
     private bool jumping = false;
@@ -61,6 +62,16 @@ public class PlayerControl : MonoBehaviour
 
     public void Squat()
     {
+        if (squating) return;
         squating = true;
+        var temp_size = box_collider.size;
+        var original_size = box_collider.size;
+        temp_size.y *= 0.5f;
+        box_collider.size = temp_size;
+        DOVirtual.DelayedCall(squat_time, () =>
+        {
+            squating = false;
+            box_collider.size = original_size;
+        }).SetUpdate(false);
     }
 }
