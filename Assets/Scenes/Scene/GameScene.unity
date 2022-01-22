@@ -636,6 +636,7 @@ MonoBehaviour:
   jump_height: 9
   jump_to_squat_time: 0.2
   squat_time: 0.5
+  idle_pos: {x: 0, y: 0, z: 0}
   hurt_amount: 1
 --- !u!65 &326464149
 BoxCollider:
@@ -759,6 +760,7 @@ MonoBehaviour:
   jump_height: 9
   jump_to_squat_time: 0.2
   squat_time: 0.5
+  idle_pos: {x: 0, y: 0, z: 0}
   hurt_amount: 1
 --- !u!1 &621208940
 GameObject:
@@ -897,7 +899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &711950508
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1508,6 +1510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384264587}
   - component: {fileID: 1384264588}
+  - component: {fileID: 1384264589}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -1545,6 +1548,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_1_text: {fileID: 1901000038}
   player_2_text: {fileID: 904771263}
+--- !u!114 &1384264589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384264586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f403e83f862a4f21a2de5ed6dbf947c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_1: {fileID: 554006596}
+  player_2: {fileID: 326464148}
 --- !u!1 &1814360278
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
         animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
-    private Vector3 idle_pos = Vector3.zero;
+    public Vector3 idle_pos = Vector3.zero;
 
     // Update is called once per frame
     void Update()
@@ -40,6 +40,10 @@ public class PlayerControl : MonoBehaviour
                 jumping = false;
                 transform.position = idle_pos;
             }
+        }
+        else
+        {
+            transform.position = idle_pos;
         }
     }
 
