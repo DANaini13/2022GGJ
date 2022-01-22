@@ -80,7 +80,8 @@ public class PlayerControl : MonoBehaviour
         if (jumping || squating) return;
         float walk_duration = 1.0f / MapController.instance.speed;
         if (Time.fixedTime - last_walk_time < walk_duration) return;
-        animator.SetFloat("speed", MapController.instance.speed/2.0f);
+        float real_speed = MapController.instance.speed > 19 ? 19 : MapController.instance.speed;
+        animator.SetFloat("speed", real_speed/2.0f);
         animator.SetTrigger("walk");
         last_walk_time = Time.fixedTime;
     }
