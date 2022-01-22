@@ -6,6 +6,7 @@ TagManager:
   tags:
   - tool
   - breakable
+  - block
   layers:
   - Default
   - TransparentFX

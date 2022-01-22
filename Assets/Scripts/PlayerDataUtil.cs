@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class PlayerDataUtil: MonoBehaviour
 {
     public GameObject game_over_img;
-    public Text player_1_text;
-    public Text player_2_text;
+    public Slider p1_slider;
+    public Slider p2_slider;
     
     static public PlayerDataUtil Instance;
 
@@ -51,7 +51,8 @@ public class PlayerDataUtil: MonoBehaviour
                 game_over = true;
                 p1_health = 0;
             }
-            player_1_text.text = p1_health.ToString();
+
+            p1_slider.value = p1_health / 100.0f;
         }
     }
     
@@ -70,7 +71,7 @@ public class PlayerDataUtil: MonoBehaviour
                 game_over = true;
                 p2_health = 0;
             }
-            player_2_text.text = p2_health.ToString();
+            p2_slider.value = p2_health / 100.0f;
         }
     }
 }
