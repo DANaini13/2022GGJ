@@ -203,9 +203,9 @@ GameObject:
   - component: {fileID: 856629385337774075}
   - component: {fileID: 4648254056603917294}
   - component: {fileID: 5478769661185521223}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: breakable_cube (1)
-  m_TagString: Untagged
+  m_TagString: breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -501,9 +501,9 @@ GameObject:
   - component: {fileID: 3476414947148199232}
   - component: {fileID: 1533191514011379155}
   - component: {fileID: 5230440583048148952}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: breakable_cube
-  m_TagString: Untagged
+  m_TagString: breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -894,9 +894,9 @@ GameObject:
   - component: {fileID: 8700590838275136104}
   - component: {fileID: 908103059376912740}
   - component: {fileID: 6630049132967886973}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: breakable_cube (2)
-  m_TagString: Untagged
+  m_TagString: breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -998,8 +998,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5871869145250174909}
+  - component: {fileID: 6612343896352014014}
   m_Layer: 0
-  m_Name: breakable_tool 1(Clone)
+  m_Name: breakable_tool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1030,6 +1031,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6612343896352014014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7827773503728456853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90029f3f6bf73478ba5776c29279c151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8595794434992993817
 GameObject:
   m_ObjectHideFlags: 0

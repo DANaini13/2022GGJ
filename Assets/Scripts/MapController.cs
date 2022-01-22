@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.iOS;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,12 +12,16 @@ public class MapController : MonoBehaviour
     public int empty_count = 0;
     public float speed = 1.0f;
     private GameObject[] unit_prefab_list;
+    private GameObject room_prefab;
     private Queue<GameObject> current_unit_list;
+    private Queue<GameObject> current_room_list;
     private void Awake()
     {
         instance = this;
         unit_prefab_list = Resources.LoadAll<GameObject>("Prefabs/MapUnits");
+        room_prefab = Resources.Load<GameObject>("Prefabs/Rooms/Room_001");
         current_unit_list = new Queue<GameObject>();
+        current_room_list = new Queue<GameObject>();
         // 先把list填满
         int start_index = 1;
         for (int i = 0; i < unit_count; i++)
@@ -34,6 +39,9 @@ public class MapController : MonoBehaviour
             var unit = Instantiate(prefab, transform);
             unit.transform.position = new Vector3(unit_width * (i - start_index), 0, 0);
             current_unit_list.Enqueue(unit);
+            var room = Instantiate(room_prefab, transform);
+            room.transform.position = new Vector3(unit_width * (i - start_index), 0, 0);
+            current_room_list.Enqueue(room);
         }
     }
 
@@ -52,5 +60,10 @@ public class MapController : MonoBehaviour
         current_unit_list.Enqueue(unit);
         GameObject.Destroy(deleting);
         last_update_x = transform.position.x;
+        deleting = current_room_list.Dequeue();
+        GameObject.Destroy(deleting);
+        var room = Instantiate(room_prefab, transform);
+        room.transform.position = unit.transform.position;
+        current_room_list.Enqueue(room);
     }
 }

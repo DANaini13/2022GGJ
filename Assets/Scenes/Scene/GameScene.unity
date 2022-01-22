@@ -662,9 +662,10 @@ MonoBehaviour:
   jump_over_particle: {fileID: 103032587}
   animator_event: {fileID: 1843127346}
   player_id: 1
-  jump_key: 106
-  squat_key: 107
-  catch_key: 108
+  jump_key: 104
+  squat_key: 106
+  catch_key: 107
+  attack_key: 108
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -718,8 +719,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   jump_time: 0.8
   jump_height: 5
-  jump_to_squat_time: 0.2
+  jump_to_squat_time: 0.05
   squat_time: 1
+  attack_time: 0.5
   catching_time: 2
   catched: 0
   catching_player: {fileID: 0}
@@ -1220,6 +1222,7 @@ MonoBehaviour:
   jump_key: 97
   squat_key: 115
   catch_key: 100
+  attack_key: 102
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -1273,8 +1276,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   jump_time: 0.8
   jump_height: 5
-  jump_to_squat_time: 0.2
+  jump_to_squat_time: 0.05
   squat_time: 1
+  attack_time: 0.5
   catching_time: 2
   catched: 0
   catching_player: {fileID: 0}
@@ -2983,7 +2987,7 @@ MonoBehaviour:
   empty_unit_prefab: {fileID: 753437305437007425, guid: 56092d4a0728747abba130c00bae521b, type: 3}
   unit_width: 60
   unit_count: 5
-  empty_count: 1
+  empty_count: 2
   speed: 5
 --- !u!1 &1852091034
 GameObject:
