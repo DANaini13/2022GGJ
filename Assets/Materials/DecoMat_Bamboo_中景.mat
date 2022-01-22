@@ -87,7 +87,7 @@ Material:
     - _DissolveAmount: 0
     - _DstBlend: 0
     - _EmissivePower: 1
-    - _Frequency: 1
+    - _Frequency: 3
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1

@@ -13,11 +13,13 @@ public class PlayerControl : MonoBehaviour
     public KeyCode jump_key;
     public KeyCode squat_key;
     public KeyCode catch_key;
+    public KeyCode attack_key;
     public AnimationCurve jump_curve;
     public float jump_time = 0.5f;
     public float jump_height = 1;
     public float jump_to_squat_time = 0.2f;
     public float squat_time = 0.5f;
+    public float attack_time = 0.5f;
     public float catching_time = 1.0f;
     public bool catched = false;
     public PlayerControl catching_player = null;
@@ -92,6 +94,9 @@ public class PlayerControl : MonoBehaviour
         }else if (Input.GetKeyDown(catch_key))
         {
             Catch();
+        }else if (Input.GetKeyDown(attack_key))
+        {
+            Attack();
         }
     }
 
@@ -142,6 +147,33 @@ public class PlayerControl : MonoBehaviour
         {
             catching_player.catched = false;
             catching_player = null;
+        });
+    }
+
+    private bool attacking = false;
+    public void Attack()
+    {
+        if (attacking) return;
+        attacking = true;
+        animator.SetFloat("hitSpeed", 1.0f/attack_time * 0.5f);
+        animator.SetTrigger("hit");
+        // 检测攻击距离内的方块
+        int layer = 1 << LayerMask.NameToLayer("breakable");
+        //射线中心点(就是球的中心点) 半径 层级 一般技能用这个
+        Collider[] cols = Physics.OverlapSphere(transform.position, 3.5f, layer);
+        for (int i = 0; i < cols.Length; i++)
+        {
+            if (!cols[i].CompareTag("breakable"))
+            {
+                continue;
+            }
+            if(cols[i].transform.position.x < transform.position.x) continue;
+            cols[i].GetComponent<BreakableCube>().OnBreak();
+            break;
+        }
+        DOVirtual.DelayedCall(attack_time, () =>
+        {
+            attacking = false;
         });
     }
 
