@@ -48,6 +48,9 @@ public class PlayerControl : MonoBehaviour
                 transform.position = idle_pos;
             }
         }
+        else if(jump_to_squat)
+        {
+        }
         else
         {
             transform.position = idle_pos;
@@ -93,23 +96,26 @@ public class PlayerControl : MonoBehaviour
     {
         if (jumping) return;
         jumping = true;
+        animator.SetFloat("jumpSpeed", 1.0f/jump_time * 0.5f);
         animator.SetTrigger("jump");
         var pos_list = new List<Vector3>();
         var temp_pos = transform.position;
         jump_start_time = Time.fixedTime;
     }
 
+    private bool jump_to_squat = true;
     public void Squat()
     {
-        if (squating) return;
-        squating = true;
         if (jumping)
         {
+            if (squating) transform.DOKill();
             transform.DOMove(idle_pos, jump_to_squat_time).SetEase(Ease.Linear).onComplete = DoSquat;
+            jump_to_squat = true;
             jumping = false;
         }
         else
         {
+            if (squating) return;
             DoSquat();
         }
     }
@@ -134,16 +140,19 @@ public class PlayerControl : MonoBehaviour
 
     private void DoSquat()
     {
+        squating = true;
+        animator.SetFloat("crouchSpeed", 1.0f/squat_time * 0.5f);
         animator.SetTrigger("crouch");
         var temp_size = box_collider.size;
         var original_size = box_collider.size;
         temp_size.y *= 0.5f;
         box_collider.size = temp_size;
-        DOVirtual.DelayedCall(squat_time, () =>
+        transform.DOKill();
+        transform.DOScaleX(1, squat_time).onComplete = () =>
         {
             squating = false;
             box_collider.size = original_size;
-        }).SetUpdate(false);
+        };
     }
 
     private float hurt_cd = 0.5f;
