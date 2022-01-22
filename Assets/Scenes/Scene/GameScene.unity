@@ -4080,6 +4080,8 @@ MonoBehaviour:
   empty_count: 2
   speed: 5
   map_add_speed_duration: 1
+  ps_room_1: {fileID: 1806432954}
+  ps_room_2: {fileID: 116414225}
 --- !u!1 &1852091034
 GameObject:
   m_ObjectHideFlags: 0
