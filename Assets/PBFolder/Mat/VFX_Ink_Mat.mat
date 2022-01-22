@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DefaultBlendParMat
-  m_Shader: {fileID: 4800000, guid: 601533a85fffab14abed3cdd4baccc32, type: 3}
+  m_Name: VFX_Ink_Mat
+  m_Shader: {fileID: 4800000, guid: 27cb9e47190c95f43929090637069cd6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DisolveGuide:
-        m_Texture: {fileID: 2800000, guid: 232b8e8e327c94848a476472a204a6e4, type: 3}
+        m_Texture: {fileID: 2800000, guid: df1b60e0641c0544c86f432ba4211de3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ec83658c53b6cb24f8cd98e716dea2c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -69,7 +69,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _ColorPower: 1.38
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
