@@ -490,6 +490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 4773849701608883726, guid: 5578b4fffa38e4641a8d9e9205ffd702, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5263528936300666036, guid: 5578b4fffa38e4641a8d9e9205ffd702, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -575,8 +579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_id: 1
-  jump_key: 107
-  squat_key: 108
+  jump_key: 106
+  squat_key: 107
+  catch_key: 108
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -632,6 +637,11 @@ MonoBehaviour:
   jump_height: 9
   jump_to_squat_time: 0.2
   squat_time: 0.5
+  catching_cd: 1
+  catched: 0
+  catching_player: {fileID: 0}
+  catching_offset: {x: 1, y: 1, z: 1}
+  idle_pos: {x: 0, y: 0, z: 0}
   hurt_amount: 1
 --- !u!65 &326464149
 BoxCollider:
@@ -700,6 +710,7 @@ MonoBehaviour:
   player_id: 0
   jump_key: 97
   squat_key: 115
+  catch_key: 100
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -755,6 +766,11 @@ MonoBehaviour:
   jump_height: 9
   jump_to_squat_time: 0.2
   squat_time: 0.5
+  catching_cd: 1
+  catched: 0
+  catching_player: {fileID: 0}
+  catching_offset: {x: 1, y: 1, z: 1}
+  idle_pos: {x: 0, y: 0, z: 0}
   hurt_amount: 1
 --- !u!1 &621208940
 GameObject:
@@ -893,7 +909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &711950508
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1063,7 +1079,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1504,6 +1520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384264587}
   - component: {fileID: 1384264588}
+  - component: {fileID: 1384264589}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -1541,6 +1558,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_1_text: {fileID: 1901000038}
   player_2_text: {fileID: 904771263}
+--- !u!114 &1384264589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384264586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f403e83f862a4f21a2de5ed6dbf947c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_1: {fileID: 554006596}
+  player_2: {fileID: 326464148}
 --- !u!1 &1814360278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,7 +1607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 2120}
+  m_AnchoredPosition: {x: 40, y: 737}
   m_SizeDelta: {x: 254.2, y: 222.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814360280
@@ -1846,6 +1877,10 @@ PrefabInstance:
     - target: {fileID: 4773849701608883726, guid: 5578b4fffa38e4641a8d9e9205ffd702, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773849701608883726, guid: 5578b4fffa38e4641a8d9e9205ffd702, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5263528936300666036, guid: 5578b4fffa38e4641a8d9e9205ffd702, type: 3}
       propertyPath: m_RootOrder
