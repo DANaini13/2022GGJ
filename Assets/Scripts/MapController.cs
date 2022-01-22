@@ -1,17 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.iOS;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class MapController : MonoBehaviour
 {
+    public static MapController instance;
+    
+    
     public float unit_width = 60;
     public float speed = 1.0f;
     private GameObject[] map_unit_list;
     private void Awake()
     {
+        instance = this;
         map_unit_list = Resources.LoadAll<GameObject>("Prefabs/MapUnits");
         int rand_index = Random.Range(0, map_unit_list.Length);
         var prefab = map_unit_list[rand_index];
