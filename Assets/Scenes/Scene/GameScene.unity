@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -823,7 +823,7 @@ MonoBehaviour:
   jump_key: 104
   squat_key: 106
   catch_key: 107
-  attack_key: 108
+  attack_key: 0
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -1245,7 +1245,7 @@ MonoBehaviour:
   jump_key: 97
   squat_key: 115
   catch_key: 100
-  attack_key: 102
+  attack_key: 0
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -3093,6 +3093,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5844149453278563753, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.065042555
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844149453278563753, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.80807036
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844149453278563753, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5769205
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844149453278563753, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.099772595
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844149453278563753, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.573
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844149453278563753, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 193.669
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844149453278563753, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 250.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844149453278563755, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
+      propertyPath: lightingSampleWeight
+      value: 0.72
+      objectReference: {fileID: 0}
     - target: {fileID: 6435543961940295283, guid: d126d38c084364e76aa6a57ef81ca197, type: 3}
       propertyPath: m_Name
       value: VFX_ForestEffect 1
