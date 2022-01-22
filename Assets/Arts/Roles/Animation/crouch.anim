@@ -695,7 +695,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 0.46666667
+  - time: 0.36666667
     functionName: PlaySnd
     data: 
     objectReferenceParameter: {fileID: 0}
