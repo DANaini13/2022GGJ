@@ -1,11 +1,12 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerControl : MonoBehaviour
 {
+    public ParticleSystem stop_particle;
+    public ParticleSystem jump_over_particle;
+    public AnimatorEvent animator_event;
     private BoxCollider box_collider;
     public enum PlayerIdType {P1, P2}
     public PlayerIdType player_id;
@@ -28,6 +29,10 @@ public class PlayerControl : MonoBehaviour
         box_collider = GetComponent<BoxCollider>();
         idle_pos = transform.position;
         animator = transform.GetChild(0).GetComponent<Animator>();
+        animator_event.on_clip_finished = clipName =>
+        {
+            stop_particle.Play();
+        };
     }
 
     public Vector3 idle_pos = Vector3.zero;
@@ -46,6 +51,7 @@ public class PlayerControl : MonoBehaviour
             {
                 jumping = false;
                 transform.position = idle_pos;
+                jump_over_particle.Play();
             }
         }
         else if(jump_to_squat)

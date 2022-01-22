@@ -16,5 +16,6 @@ public class Explod : MonoBehaviour
         {
             rb.AddExplosionForce(300f, transform.position, 10);
         }
+        GameObject.Destroy(gameObject, 5);
     }
 }
