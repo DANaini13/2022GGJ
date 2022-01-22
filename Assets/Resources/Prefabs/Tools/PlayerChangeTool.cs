@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerChangeTool : MonoBehaviour
+public class PlayerChangeTool : SceneTool
 {
     public void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
-        GameObject.Destroy(gameObject);
+        PlayAudio();
         PlayerManager.instance.SwapPlayer();
         PlayerMask.instance.Invert();
+        GameObject.Destroy(gameObject);
     } 
 }

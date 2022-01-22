@@ -5,7 +5,11 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private ParticleSystem stop_particle;
+    public AudioClip step_audio;
+    public AudioClip grab_audio;
+    public AudioSource audio_s;
     public ParticleSystem jump_over_particle;
+    public ParticleSystem hit_ps;
     public AnimatorEvent animator_event;
     private BoxCollider box_collider;
     public enum PlayerIdType {P1, P2}
@@ -74,6 +78,8 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    private float step_audio_cd = 0.1f;
+    private float last_stop_audio_time = 0;
     private float last_walk_time = 0;
     private void CheckCallWalk()
     {
@@ -81,6 +87,11 @@ public class PlayerControl : MonoBehaviour
         float walk_duration = 1.0f / MapController.instance.speed;
         if (Time.fixedTime - last_walk_time < walk_duration) return;
         float real_speed = MapController.instance.speed > 19 ? 19 : MapController.instance.speed;
+        if (Time.fixedTime - last_stop_audio_time > step_audio_cd)
+        {
+            audio_s.PlayOneShot(step_audio);
+            last_stop_audio_time = Time.fixedTime;
+        }
         animator.SetFloat("speed", real_speed/2.0f);
         animator.SetTrigger("walk");
         last_walk_time = Time.fixedTime;
@@ -147,6 +158,7 @@ public class PlayerControl : MonoBehaviour
         {
             catching_player = PlayerManager.instance.player_1;
         }
+        audio_s.PlayOneShot(grab_audio);
         catching_player.catched = true;
         DOVirtual.DelayedCall(catching_time, () =>
         {
@@ -174,6 +186,8 @@ public class PlayerControl : MonoBehaviour
             }
             if(cols[i].transform.position.x < transform.position.x) continue;
             cols[i].GetComponent<BreakableCube>().OnBreak();
+            var ps = Instantiate(hit_ps, transform);
+            ps.Play();
             break;
         }
         DOVirtual.DelayedCall(attack_time, () =>

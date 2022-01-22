@@ -15,6 +15,7 @@ public class PlayerDataUtil: MonoBehaviour
     public float score_add_duration = 1f;
     public Text score_text;
     public Text gameover_score_text;
+    public bool health_still = false;
     
     static public PlayerDataUtil Instance;
 
@@ -84,6 +85,7 @@ public class PlayerDataUtil: MonoBehaviour
         }
         set
         {
+            if (health_still) return;
             if (value < p1_health)
             {
                 hitted = true;
@@ -107,6 +109,7 @@ public class PlayerDataUtil: MonoBehaviour
         }
         set
         {
+            if (health_still) return;
             if (value < p2_health)
             {
                 hitted = true;

@@ -16,9 +16,10 @@ public class AnimatorEvent : MonoBehaviour
     {
         ps[index].Play();
     }
-
+    
     public void PlaySnd(int index)
     {
+        if (index == 0) return;
         audioS.PlayOneShot(clips[index]);
     }
 
