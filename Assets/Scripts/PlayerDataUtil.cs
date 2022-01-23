@@ -43,7 +43,7 @@ public class PlayerDataUtil: MonoBehaviour
 
     private void FeverTimeCheck()
     {
-        if (counter < 100)
+        if (counter < 40)
         {
             FeverTimeManager.instance.ExitFeverTime();
         }
