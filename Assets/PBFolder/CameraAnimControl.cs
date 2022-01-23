@@ -7,22 +7,26 @@ public class CameraAnimControl : MonoBehaviour
 {
 
     public Vector3 defaultRotate;
-    [Header("相机旋转强度：")]
+    [Header("鐩告満鏃嬭浆寮哄害")]
     public float strength = 10;
 
-    [Header("时长：")]
+    [Header("鏃堕暱")]
     public float time = 5;
 
+    void Start(){
+         defaultRotate = transform.localEulerAngles;
+    }
 
-    void Start()
+
+    public void PlayCam()
     {
-        defaultRotate = transform.localEulerAngles;
-
+       this.GetComponent<Animator>().enabled = false;
         SetCamAnim();
     }
 
     public void SetCamAnim()
     {
+        Debug.Log("aaa");
         transform.DOLocalRotate(new Vector3(Random.Range(-strength, strength), Random.Range(-strength, strength), Random.Range(-strength, strength)), time, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).OnComplete(()=> {
             transform.DOLocalRotate(defaultRotate, time).SetEase(Ease.Linear).OnComplete(()=> {
                 SetCamAnim();
