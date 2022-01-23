@@ -96,12 +96,12 @@ public class PlayerControl : MonoBehaviour
         animator.SetTrigger("walk");
         last_walk_time = Time.fixedTime;
         // 射线检测下方的block
-        RaycastHit hit;
-        bool grounded = Physics.Raycast(transform.position, -Vector3.up, out hit);
-        if (grounded)
-        {
-            //Debug.Log(hit.);
-        }
+        // RaycastHit hit;
+        // bool grounded = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector3.down, out hit, 3, 1<<LayerMask.NameToLayer("Tile"));
+        // if (grounded)
+        // {
+        //     Debug.Log(hit.collider.gameObject.transform.position);
+        // }
     }
 
     private void ListenInput()
