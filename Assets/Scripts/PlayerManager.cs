@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     static public PlayerManager instance;
+    public ParticleSystem p1_red;
+    public ParticleSystem p2_blue;
 
     public void Awake()
     {
@@ -20,5 +22,9 @@ public class PlayerManager : MonoBehaviour
         var temp_pos = player_1.idle_pos;
         player_1.idle_pos = player_2.idle_pos;
         player_2.idle_pos = temp_pos;
+        var ps1 = Instantiate(p1_red, player_1.transform);
+        ps1.Play();
+        var ps2 = Instantiate(p2_blue, player_2.transform);
+        ps2.Play();
     }
 }

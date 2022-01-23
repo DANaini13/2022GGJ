@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3851,6 +3851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f403e83f862a4f21a2de5ed6dbf947c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p1_red: {fileID: 9162559628660437665, guid: 0d9f2b69075df1d4ab608b1e1089d2ef, type: 3}
+  p2_blue: {fileID: 7224310040964153154, guid: b20933beb9475e94785af8793e82d002, type: 3}
   player_1: {fileID: 554006596}
   player_2: {fileID: 336471719}
 --- !u!82 &1448003920 stripped
@@ -4339,13 +4341,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 698ecee1cc62bf947aa7eb79caa77b72, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
