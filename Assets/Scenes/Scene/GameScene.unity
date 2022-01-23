@@ -2722,7 +2722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultRotate: {x: 0, y: 0, z: 0}
-  strength: 10
+  strength: 7
   time: 5
 --- !u!95 &789303943
 Animator:

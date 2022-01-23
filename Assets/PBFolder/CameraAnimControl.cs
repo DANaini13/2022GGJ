@@ -13,16 +13,20 @@ public class CameraAnimControl : MonoBehaviour
     [Header("时长")]
     public float time = 5;
 
+    void Start(){
+         defaultRotate = transform.localEulerAngles;
+    }
+
 
     public void PlayCam()
     {
-        defaultRotate = transform.localEulerAngles;
-
+       this.GetComponent<Animator>().enabled = false;
         SetCamAnim();
     }
 
     public void SetCamAnim()
     {
+        Debug.Log("aaa");
         transform.DOLocalRotate(new Vector3(Random.Range(-strength, strength), Random.Range(-strength, strength), Random.Range(-strength, strength)), time, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).OnComplete(()=> {
             transform.DOLocalRotate(defaultRotate, time).SetEase(Ease.Linear).OnComplete(()=> {
                 SetCamAnim();
