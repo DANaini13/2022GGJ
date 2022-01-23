@@ -26,6 +26,10 @@ public class PlayerDataUtil: MonoBehaviour
 
     private void Update()
     {
+        if (Input.anyKey && Input.GetKeyDown(KeyCode.Q))
+        {
+            health_still = !health_still;
+        }
         CounterCheck();
         FeverTimeCheck();
         if (game_over)
