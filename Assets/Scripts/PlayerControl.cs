@@ -95,6 +95,13 @@ public class PlayerControl : MonoBehaviour
         animator.SetFloat("speed", real_speed/2.0f);
         animator.SetTrigger("walk");
         last_walk_time = Time.fixedTime;
+        // 射线检测下方的block
+        RaycastHit hit;
+        bool grounded = Physics.Raycast(transform.position, -Vector3.up, out hit);
+        if (grounded)
+        {
+            //Debug.Log(hit.);
+        }
     }
 
     private void ListenInput()

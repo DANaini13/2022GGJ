@@ -21,6 +21,7 @@ public class FeverTimeManager: MonoBehaviour
     public void Start()
     {
         Shader.SetGlobalFloat("AlphaPower", 0);
+        Shader.SetGlobalFloat("FeverTimeAmount", 0);
     }
 
     private bool fever_time = false;
