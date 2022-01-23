@@ -11,6 +11,8 @@ public class MapController : MonoBehaviour
     public int empty_count = 0;
     public float speed = 1.0f;
     public float map_add_speed_duration = 1.0f;
+    public GameObject ps_room_1;
+    public GameObject ps_room_2;
     private GameObject[] unit_prefab_list;
     private GameObject[] room_prefab_list;
     private Queue<GameObject> current_unit_list;
@@ -18,8 +20,14 @@ public class MapController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        string folder_name = "room_" + Random.Range(1, 3);
+        if (folder_name.Equals("room_1"))
+        {
+            ps_room_1.gameObject.SetActive(false);
+            ps_room_2.gameObject.SetActive(false);
+        }
         unit_prefab_list = Resources.LoadAll<GameObject>("Prefabs/MapUnits");
-        room_prefab_list = Resources.LoadAll<GameObject>("Prefabs/Rooms");
+        room_prefab_list = Resources.LoadAll<GameObject>("Prefabs/Rooms/" + folder_name);
         current_unit_list = new Queue<GameObject>();
         current_room_list = new Queue<GameObject>();
         // 先把list填满

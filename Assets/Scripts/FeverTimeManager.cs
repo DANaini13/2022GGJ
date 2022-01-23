@@ -21,6 +21,7 @@ public class FeverTimeManager: MonoBehaviour
     public void Start()
     {
         Shader.SetGlobalFloat("AlphaPower", 0);
+        Shader.SetGlobalFloat("FeverTimeAmount", 0);
     }
 
     private bool fever_time = false;
@@ -40,9 +41,10 @@ public class FeverTimeManager: MonoBehaviour
         float dissolve_amount = 0;
         transform.DOScaleX(1, 0.05f).SetLoops(32).onStepComplete = () =>
         {
-            Shader.SetGlobalFloat("AlphaPower", dissolve_amount);
             dissolve_amount = dissolve_amount < 0 ? 0 : dissolve_amount;
             dissolve_amount = dissolve_amount > 1 ? 1 : dissolve_amount;
+            Shader.SetGlobalFloat("AlphaPower", dissolve_amount);
+            Shader.SetGlobalFloat("FeverTimeAmount", dissolve_amount);
             dissolve_amount += 0.0334f;
         };
         // 缓存相机的bg颜色，设置相机的bg颜色到黑色
@@ -75,9 +77,10 @@ public class FeverTimeManager: MonoBehaviour
         float dissolve_amount = 1;
         transform.DOScaleX(1, 0.05f).SetLoops(32).onStepComplete = () =>
         {
-            Shader.SetGlobalFloat("AlphaPower", dissolve_amount);
             dissolve_amount = dissolve_amount < 0 ? 0 : dissolve_amount;
             dissolve_amount = dissolve_amount > 1 ? 1 : dissolve_amount;
+            Shader.SetGlobalFloat("AlphaPower", dissolve_amount);
+            Shader.SetGlobalFloat("FeverTimeAmount", dissolve_amount);
             dissolve_amount -= 0.0334f;
         };
         // 恢复相机bg颜色
