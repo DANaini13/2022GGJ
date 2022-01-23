@@ -871,9 +871,9 @@ MonoBehaviour:
   hit_ps: {fileID: 1730087086875077604, guid: e06eecc91399f3f4db4bb1ceaf8ce087, type: 3}
   animator_event: {fileID: 945645748}
   player_id: 1
-  jump_key: 104
-  squat_key: 106
-  catch_key: 107
+  jump_key: 105
+  squat_key: 107
+  catch_key: 106
   attack_key: 108
   jump_curve:
     serializedVersion: 2
@@ -1007,7 +1007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: -46.64}
+  m_AnchoredPosition: {x: -80, y: -490.98}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438212606
@@ -1434,10 +1434,10 @@ MonoBehaviour:
   hit_ps: {fileID: 1730087086875077604, guid: e06eecc91399f3f4db4bb1ceaf8ce087, type: 3}
   animator_event: {fileID: 441511441}
   player_id: 0
-  jump_key: 97
+  jump_key: 119
   squat_key: 115
-  catch_key: 100
-  attack_key: 102
+  catch_key: 97
+  attack_key: 100
   jump_curve:
     serializedVersion: 2
     m_Curve:
@@ -4080,6 +4080,8 @@ MonoBehaviour:
   empty_count: 2
   speed: 5
   map_add_speed_duration: 1
+  ps_room_1: {fileID: 1806432954}
+  ps_room_2: {fileID: 116414225}
 --- !u!1 &1852091034
 GameObject:
   m_ObjectHideFlags: 0
