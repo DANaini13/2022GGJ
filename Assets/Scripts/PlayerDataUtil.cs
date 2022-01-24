@@ -89,6 +89,7 @@ public class PlayerDataUtil: MonoBehaviour
             if (value < p1_health)
             {
                 hitted = true;
+                PlayerManager.instance.SetP1Hurt();
             }
             p1_health = value;
             if (p1_health > 100) p1_health = 100;
@@ -113,6 +114,7 @@ public class PlayerDataUtil: MonoBehaviour
             if (value < p2_health)
             {
                 hitted = true;
+                PlayerManager.instance.SetP2Hurt();
             }
             p2_health = value;
             if (p2_health > 100) p2_health = 100;
