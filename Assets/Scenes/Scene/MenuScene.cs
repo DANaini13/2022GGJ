@@ -6,6 +6,7 @@ public class MenuScene : MonoBehaviour
 {
     private void OnEnable()
     {
+        Time.timeScale = 1;
         loading = false;
     }
 
@@ -16,7 +17,6 @@ public class MenuScene : MonoBehaviour
         if (Input.anyKeyDown)
         {
             SceneManager.LoadScene(sceneBuildIndex: 1);
-            Time.timeScale = 1;
             loading = true;
         }
     }

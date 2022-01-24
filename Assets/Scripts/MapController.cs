@@ -20,8 +20,12 @@ public class MapController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        string folder_name = "room_" + Random.Range(1, 3);
-        folder_name = "room_2";
+        string folder_name = "room_" + (Random.Range(1, 5) > 1? 1 : 2).ToString();
+        if (PlayerPrefs.GetInt("first_game", 1) == 1)
+        {
+            PlayerPrefs.SetInt("first_game", 0);
+            folder_name = "room_2";
+        }
         if (folder_name.Equals("room_1"))
         {
             ps_room_1.gameObject.SetActive(false);

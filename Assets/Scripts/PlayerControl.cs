@@ -203,6 +203,11 @@ public class PlayerControl : MonoBehaviour
         });
     }
 
+    public void OnHurt()
+    {
+        animator.SetTrigger("hurt");
+    }
+
     private void DoSquat()
     {
         squating = true;
