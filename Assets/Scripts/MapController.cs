@@ -21,7 +21,11 @@ public class MapController : MonoBehaviour
     {
         instance = this;
         string folder_name = "room_" + Random.Range(1, 3);
-        folder_name = "room_2";
+        if (PlayerPrefs.GetInt("first_game", 1) == 1)
+        {
+            PlayerPrefs.SetInt("first_game", 0);
+            folder_name = "room_2";
+        }
         if (folder_name.Equals("room_1"))
         {
             ps_room_1.gameObject.SetActive(false);
