@@ -15,6 +15,7 @@ public class CameraAnimControl : MonoBehaviour
 
     void Start(){
          defaultRotate = transform.localEulerAngles;
+       this.GetComponent<Animator>().SetTrigger("start");
     }
 
 

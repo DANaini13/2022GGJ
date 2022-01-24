@@ -203,6 +203,11 @@ public class PlayerControl : MonoBehaviour
         });
     }
 
+    public void OnHurt()
+    {
+        animator.SetTrigger("hurt");
+    }
+
     private void DoSquat()
     {
         squating = true;
@@ -232,7 +237,8 @@ public class PlayerControl : MonoBehaviour
         {
             return;
         }
-        hurt_cd = 2.1f/MapController.instance.speed;
+
+        hurt_cd = 0.5f;
         if (Time.fixedTime - last_hurt_time < hurt_cd) return;
         if (player_id == PlayerIdType.P1)
             PlayerDataUtil.Instance.P1Health -= hurt_amount;

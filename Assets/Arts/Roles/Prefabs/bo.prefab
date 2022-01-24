@@ -327,6 +327,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 88785a528346e904c96ebfdb1e6c1885, type: 3}
   - {fileID: 8300000, guid: 18545cd9249a00e47a876a1e7f7a0e1a, type: 3}
   - {fileID: 8300000, guid: 1cd93f2407cc2014a8d518145927bdcf, type: 3}
+  - {fileID: 8300000, guid: ac0948b739967a94b9fc18add513996c, type: 3}
   audioS: {fileID: 8850139213172661578}
   anim: {fileID: 3153679108917148624}
 --- !u!82 &8850139213172661578
