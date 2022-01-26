@@ -67,6 +67,7 @@ public class MapController : MonoBehaviour
     }
 
     private float last_update_x = 0;
+    private int unit_repeat_index = -1;
     public void Update()
     {
         CheckAddSpeed();
@@ -78,16 +79,16 @@ public class MapController : MonoBehaviour
         //超出距离，销毁旧道路，生成新的道路
         if (last_update_x - transform.position.x < unit_width) return;
         var deleting = current_unit_list.Dequeue();
-        int rand_index = Random.Range(0, unit_prefab_list.Length);
-        var prefab = unit_prefab_list[rand_index];
+        int unit_index = unit_repeat_index >= 0 ? unit_repeat_index:Random.Range(0, unit_prefab_list.Length);
+        var prefab = unit_prefab_list[unit_index];
         var unit = Instantiate(prefab, transform);
         unit.transform.position = new Vector3(deleting.transform.position.x + unit_width * unit_count, 0, 0);
         current_unit_list.Enqueue(unit);
         GameObject.Destroy(deleting);
         //房间
         deleting = current_room_list.Dequeue();
-        int rand_room_index = Random.Range(0, room_prefab_list.Length);
-        var room_prefab = room_prefab_list[rand_room_index];
+        int rand_map_index = Random.Range(0, room_prefab_list.Length);
+        var room_prefab = room_prefab_list[rand_map_index];
         var room = Instantiate(room_prefab, transform);
         room.transform.position = unit.transform.position;
         current_room_list.Enqueue(room);
@@ -95,6 +96,14 @@ public class MapController : MonoBehaviour
 
         //重新记录当前距离
         last_update_x = transform.position.x;
+
+        //判断道路是否重复生成
+        ToolGenerator toolGenerator = unit.GetComponent<ToolGenerator>();
+        if (!toolGenerator) return;
+        if (Random.Range(0, 100) > toolGenerator.repeat_chance)
+            unit_repeat_index = -1;
+        else
+            unit_repeat_index = unit_index;
     }
 
     private float last_add_speed_time = 0;

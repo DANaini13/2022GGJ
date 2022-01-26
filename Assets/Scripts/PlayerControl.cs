@@ -19,22 +19,29 @@ public class PlayerControl : MonoBehaviour
     public KeyCode catch_key;
     public KeyCode attack_key;
     public AnimationCurve jump_curve;
-    public float jump_time = 0.5f;
+    private float jump_time;
+    public float jump_time_default = 0.7f;
+    public float jump_buffer_multiplier = 0.15f;//跳跃时间还剩余多少百分比时可以再次跳跃
     public float jump_height = 1;
-    public float jump_to_squat_time = 0.2f;
-    public float squat_time = 0.5f;
-    public float squat_repeat_time = 0.3f;//下蹲多久可以再次下蹲
+    public float jump_to_squat_time = 0.1f;
+    private float squat_time;
+    public float squat_time_default = 0.7f;
+    public float squat_buffer_multiplier = 0.15f;//下蹲时间还剩余多少百分比时可以再次下蹲
     public float attack_time = 0.5f;
     public float catching_time = 1.0f;
     public bool catched = false;
     public PlayerControl catching_player = null;
     public Vector3 catching_offset = new Vector3(-0.5f, 0, 0);
     private Animator animator;
-    private float squat_timer;
+    private float squat_timer, jump_timer;
+    private Vector3 original_collider_size;
 
     private void Awake()
     {
+        jump_time = jump_time_default;
+        squat_time = squat_time_default;
         box_collider = GetComponent<BoxCollider>();
+        original_collider_size = box_collider.size;//在初始化时记录，避免下蹲期间多次下蹲导致尺寸错误
         idle_pos = transform.position;
         animator = transform.GetChild(0).GetComponent<Animator>();
         stop_particle = Resources.Load<ParticleSystem>("Prefabs/VFX_StepEffect");
@@ -80,6 +87,11 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (squating) squat_timer += Time.deltaTime;
+        if (jumping) jump_timer += Time.deltaTime;
+
+        //刷新跳跃和下蹲速度
+        squat_time = (1.0f - MapController.instance.GetCurDifficulty() / 110.0f) * squat_time_default;
+        jump_time = (1.0f - MapController.instance.GetCurDifficulty() / 110.0f) * jump_time_default;
     }
 
     private float step_audio_cd = 0.1f;
@@ -135,8 +147,9 @@ public class PlayerControl : MonoBehaviour
     private float jump_start_time = 0;
     public void Jump()
     {
-        if (jumping) return;
+        if (jumping && jump_timer < (jump_time * (1 - jump_buffer_multiplier))) return;
         jumping = true;
+        jump_timer = 0f;
         animator.SetFloat("jumpSpeed", 1.0f / jump_time * 0.5f);
         animator.SetTrigger("jump");
         var pos_list = new List<Vector3>();
@@ -156,7 +169,7 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            if (squating && squat_timer < squat_repeat_time) return;
+            if (squating && squat_timer < (squat_time * (1 - squat_buffer_multiplier))) return;
             DoSquat();
         }
     }
@@ -213,7 +226,7 @@ public class PlayerControl : MonoBehaviour
     public void OnHurt()
     {
         animator.SetTrigger("hurt");
-        MapController.instance.SlowDown();//受伤后重置速度
+        MapController.instance.SlowDown();//受伤后降低速度
     }
 
     private void DoSquat()
@@ -223,15 +236,14 @@ public class PlayerControl : MonoBehaviour
         jump_to_squat = false;
         animator.SetFloat("crouchSpeed", 1.0f / squat_time * 0.5f);
         animator.SetTrigger("crouch");
-        var temp_size = box_collider.size;
-        var original_size = box_collider.size;
+        var temp_size = original_collider_size;
         temp_size.y *= 0.5f;
         box_collider.size = temp_size;
         transform.DOKill();
         transform.DOScaleX(1, squat_time).onComplete = () =>
         {
             squating = false;
-            box_collider.size = original_size;
+            box_collider.size = original_collider_size;
         };
     }
 

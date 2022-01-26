@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6863603430459334114}
   - component: {fileID: 2452454402497858939}
   m_Layer: 0
-  m_Name: normal_001
+  m_Name: p1jump_001_c6_repeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,11 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolPrefabs:
   - {fileID: 1276128914739986114, guid: 66264b2f1b2a543bfafc71b871ec49dc, type: 3}
-  - {fileID: 4796171492044825441, guid: 21a735379029d4e2e82cbcd5509fd172, type: 3}
   use_queue: 0
-  tool_count: 0
+  tool_count: 6
   use_even_count: 0
-  repeat_chance: 0
+  repeat_chance: 33
 --- !u!1001 &2238692848371143180
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1210,6 +1210,7 @@ MonoBehaviour:
   jump_height: 5
   jump_to_squat_time: 0.05
   squat_time: 1
+  squat_repeat_time: 0.3
   attack_time: 0.5
   catching_time: 2
   catched: 0
@@ -2000,6 +2001,7 @@ MonoBehaviour:
   jump_height: 5
   jump_to_squat_time: 0.05
   squat_time: 1
+  squat_repeat_time: 0.3
   attack_time: 0.5
   catching_time: 2
   catched: 0
