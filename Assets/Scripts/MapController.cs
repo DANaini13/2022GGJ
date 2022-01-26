@@ -20,7 +20,8 @@ public class MapController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        string folder_name = "room_" + (Random.Range(1, 6) > 1? 2 : 1).ToString();
+        //第一次以竹林关启动
+        string folder_name = "room_" + (Random.Range(1, 6) > 1 ? 2 : 1).ToString();
         if (PlayerPrefs.GetInt("first_game", 1) == 1)
         {
             PlayerPrefs.SetInt("first_game", 0);
@@ -64,9 +65,12 @@ public class MapController : MonoBehaviour
     public void Update()
     {
         CheckAddSpeed();
+        //地图滚动
         var old_pos = transform.position;
         old_pos.x -= speed * Time.deltaTime;
         transform.position = old_pos;
+        
+        //超出距离，销毁旧道路，生成新的道路
         if (last_update_x - transform.position.x < unit_width) return;
         var deleting = current_unit_list.Dequeue();
         int rand_index = Random.Range(0, unit_prefab_list.Length);
@@ -75,14 +79,17 @@ public class MapController : MonoBehaviour
         unit.transform.position = new Vector3(deleting.transform.position.x + unit_width * unit_count, 0, 0);
         current_unit_list.Enqueue(unit);
         GameObject.Destroy(deleting);
-        last_update_x = transform.position.x;
+        //房间
         deleting = current_room_list.Dequeue();
-        GameObject.Destroy(deleting);
         int rand_room_index = Random.Range(0, room_prefab_list.Length);
         var room_prefab = room_prefab_list[rand_room_index];
         var room = Instantiate(room_prefab, transform);
         room.transform.position = unit.transform.position;
         current_room_list.Enqueue(room);
+        GameObject.Destroy(deleting);
+
+        //重新记录当前距离
+        last_update_x = transform.position.x;
     }
 
     private float last_add_speed_time = 0;
