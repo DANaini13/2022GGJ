@@ -111,4 +111,9 @@ public class MapController : MonoBehaviour
         speed *= speed_hurt_multiplier;
         if (speed < speed_min) speed = speed_min;
     }
+
+    public int GetCurDifficulty()
+    {
+        return Mathf.RoundToInt((speed - speed_min) / (speed_max - speed_min) * 100.0f);
+    }
 }
