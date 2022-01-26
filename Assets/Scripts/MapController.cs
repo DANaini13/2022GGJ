@@ -9,8 +9,12 @@ public class MapController : MonoBehaviour
     public float unit_width = 60;
     public int unit_count = 5;
     public int empty_count = 0;
-    public float speed = 1.0f;
-    public float map_add_speed_duration = 1.0f;
+    public float speed = 5.0f;
+    public float speed_min = 5.0f;
+    public float speed_max = 40.0f;
+    public float speed_hurt_multiplier = 0.75f;      //受伤后速度乘数
+    public float map_add_speed_duration = 1.0f;     //加速频率
+    public float map_add_speed_value = 0.5f;        //每次速度增加的值
     public GameObject ps_room_1;
     public GameObject ps_room_2;
     private GameObject[] unit_prefab_list;
@@ -20,6 +24,7 @@ public class MapController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        speed = speed_min;
         //第一次以竹林关启动
         string folder_name = "room_" + (Random.Range(1, 6) > 1 ? 2 : 1).ToString();
         if (PlayerPrefs.GetInt("first_game", 1) == 1)
@@ -69,7 +74,7 @@ public class MapController : MonoBehaviour
         var old_pos = transform.position;
         old_pos.x -= speed * Time.deltaTime;
         transform.position = old_pos;
-        
+
         //超出距离，销毁旧道路，生成新的道路
         if (last_update_x - transform.position.x < unit_width) return;
         var deleting = current_unit_list.Dequeue();
@@ -97,6 +102,13 @@ public class MapController : MonoBehaviour
     {
         if (Time.fixedTime - last_add_speed_time < map_add_speed_duration) return;
         last_add_speed_time = Time.fixedTime;
-        speed += 0.1f;
+        speed += map_add_speed_value;
+        if (speed > speed_max) speed = speed_max;
+    }
+
+    public void SlowDown()
+    {
+        speed *= speed_hurt_multiplier;
+        if (speed < speed_min) speed = speed_min;
     }
 }

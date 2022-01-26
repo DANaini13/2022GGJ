@@ -5317,7 +5317,11 @@ MonoBehaviour:
   unit_count: 5
   empty_count: 2
   speed: 5
+  speed_min: 5
+  speed_max: 40
+  speed_hurt_multiplier: 0.75
   map_add_speed_duration: 1
+  map_add_speed_value: 0.5
   ps_room_1: {fileID: 1806432954}
   ps_room_2: {fileID: 116414225}
 --- !u!82 &1850076348

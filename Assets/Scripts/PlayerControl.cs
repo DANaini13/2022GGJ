@@ -206,6 +206,7 @@ public class PlayerControl : MonoBehaviour
     public void OnHurt()
     {
         animator.SetTrigger("hurt");
+        MapController.instance.SlowDown();//受伤后重置速度
     }
 
     private void DoSquat()
