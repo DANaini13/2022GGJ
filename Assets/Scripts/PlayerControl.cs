@@ -12,7 +12,7 @@ public class PlayerControl : MonoBehaviour
     public ParticleSystem hit_ps;
     public AnimatorEvent animator_event;
     private BoxCollider box_collider;
-    public enum PlayerIdType {P1, P2}
+    public enum PlayerIdType { P1, P2 }
     public PlayerIdType player_id;
     public KeyCode jump_key;
     public KeyCode squat_key;
@@ -23,12 +23,14 @@ public class PlayerControl : MonoBehaviour
     public float jump_height = 1;
     public float jump_to_squat_time = 0.2f;
     public float squat_time = 0.5f;
+    public float squat_repeat_time = 0.3f;//下蹲多久可以再次下蹲
     public float attack_time = 0.5f;
     public float catching_time = 1.0f;
     public bool catched = false;
     public PlayerControl catching_player = null;
     public Vector3 catching_offset = new Vector3(-0.5f, 0, 0);
     private Animator animator;
+    private float squat_timer;
 
     private void Awake()
     {
@@ -55,7 +57,7 @@ public class PlayerControl : MonoBehaviour
         ListenInput();
         if (jumping)
         {
-            float current_index = (Time.fixedTime - jump_start_time)/jump_time;
+            float current_index = (Time.fixedTime - jump_start_time) / jump_time;
             transform.position = new Vector3(idle_pos.x, jump_curve.Evaluate(current_index) * jump_height + idle_pos.y, idle_pos.z);
             if (current_index >= 1)
             {
@@ -64,7 +66,7 @@ public class PlayerControl : MonoBehaviour
                 jump_over_particle.Play();
             }
         }
-        else if(jump_to_squat)
+        else if (jump_to_squat)
         {
         }
         else
@@ -76,6 +78,8 @@ public class PlayerControl : MonoBehaviour
         {
             catching_player.transform.position = transform.position + catching_offset;
         }
+
+        if (squating) squat_timer += Time.deltaTime;
     }
 
     private float step_audio_cd = 0.1f;
@@ -92,7 +96,7 @@ public class PlayerControl : MonoBehaviour
             audio_s.PlayOneShot(step_audio);
             last_stop_audio_time = Time.fixedTime;
         }
-        animator.SetFloat("speed", real_speed/2.0f);
+        animator.SetFloat("speed", real_speed / 2.0f);
         animator.SetTrigger("walk");
         last_walk_time = Time.fixedTime;
         // 射线检测下方的block
@@ -111,13 +115,16 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(jump_key))
         {
             Jump();
-        }else if (Input.GetKeyDown(squat_key))
+        }
+        else if (Input.GetKeyDown(squat_key))
         {
             Squat();
-        }else if (Input.GetKeyDown(catch_key))
+        }
+        else if (Input.GetKeyDown(catch_key))
         {
             Catch();
-        }else if (Input.GetKeyDown(attack_key))
+        }
+        else if (Input.GetKeyDown(attack_key))
         {
             Attack();
         }
@@ -130,7 +137,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (jumping) return;
         jumping = true;
-        animator.SetFloat("jumpSpeed", 1.0f/jump_time * 0.5f);
+        animator.SetFloat("jumpSpeed", 1.0f / jump_time * 0.5f);
         animator.SetTrigger("jump");
         var pos_list = new List<Vector3>();
         var temp_pos = transform.position;
@@ -149,7 +156,7 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            if (squating) return;
+            if (squating && squat_timer < squat_repeat_time) return;
             DoSquat();
         }
     }
@@ -179,7 +186,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (attacking) return;
         attacking = true;
-        animator.SetFloat("hitSpeed", 1.0f/attack_time * 0.5f);
+        animator.SetFloat("hitSpeed", 1.0f / attack_time * 0.5f);
         animator.SetTrigger("hit");
         // 检测攻击距离内的方块
         int layer = 1 << LayerMask.NameToLayer("breakable");
@@ -191,7 +198,7 @@ public class PlayerControl : MonoBehaviour
             {
                 continue;
             }
-            if(cols[i].transform.position.x < transform.position.x) continue;
+            if (cols[i].transform.position.x < transform.position.x) continue;
             cols[i].GetComponent<BreakableCube>().OnBreak();
             var ps = Instantiate(hit_ps, transform);
             ps.Play();
@@ -212,8 +219,9 @@ public class PlayerControl : MonoBehaviour
     private void DoSquat()
     {
         squating = true;
+        squat_timer = 0f;
         jump_to_squat = false;
-        animator.SetFloat("crouchSpeed", 1.0f/squat_time * 0.5f);
+        animator.SetFloat("crouchSpeed", 1.0f / squat_time * 0.5f);
         animator.SetTrigger("crouch");
         var temp_size = box_collider.size;
         var original_size = box_collider.size;
