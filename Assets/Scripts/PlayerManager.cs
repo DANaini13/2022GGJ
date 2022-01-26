@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public ParticleSystem p1_red;
     public ParticleSystem p2_blue;
     public Animator special;
+    private bool isChange = false;
 
     public void Awake()
     {
@@ -28,17 +29,20 @@ public class PlayerManager : MonoBehaviour
         var ps2 = Instantiate(p2_blue, player_2.transform);
         ps2.Play();
         special.SetTrigger("change");
+        isChange = !isChange;
     }
 
     public void SetP1Hurt()
     {
         player_1.OnHurt();
-        special.SetTrigger("p1hurt");
+        if (!isChange) special.SetTrigger("p1hurt");
+        else special.SetTrigger("p2hurt");
     }
 
     public void SetP2Hurt()
     {
         player_2.OnHurt();
-        special.SetTrigger("p2hurt");
+        if (!isChange) special.SetTrigger("p2hurt");
+        else special.SetTrigger("p1hurt");
     }
 }
