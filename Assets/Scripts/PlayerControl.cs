@@ -260,23 +260,31 @@ public class PlayerControl : MonoBehaviour
     private float hurt_cd = 0.5f;
     public int hurt_amount = 1;
     private float last_hurt_time = 0;
-    private int hp_before_check;
+    private bool can_pass_check_point;
+    private float last_pass_cp_time;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) return;
         if (other.gameObject.CompareTag("tool")) return;
         if (other.gameObject.CompareTag("checkPoint"))
         {
-            if (player_id == PlayerIdType.P1)
-                hp_before_check = PlayerDataUtil.Instance.P1Health;
-            else
-                hp_before_check = PlayerDataUtil.Instance.P2Health;
+            if (Time.fixedTime - last_pass_cp_time < 0.25f) can_pass_check_point = false;//距离上次离开检测点时间太短时，关闭判断（通常出现在吸附结束时又进入了判定点）
         }
+        BlockAnim bAnim = other.gameObject.GetComponent<BlockAnim>();
+        if (other.gameObject.CompareTag("catchBlock"))
+        {
+            if (bAnim)
+                bAnim.Rotate();
+        }
+
         if (!other.gameObject.CompareTag("block") && !other.gameObject.CompareTag("breakable"))
         {
             return;
         }
 
+        if (bAnim)
+            bAnim.Break();
+        can_pass_check_point = false;
         hurt_cd = 0.5f;
         if (Time.fixedTime - last_hurt_time < hurt_cd) return;
         if (player_id == PlayerIdType.P1)
@@ -295,21 +303,21 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!other.gameObject.CompareTag("checkPoint")) return;
-        if (player_id == PlayerIdType.P1)
+        last_pass_cp_time = Time.fixedTime;
+        if (can_pass_check_point)
         {
-            if (PlayerDataUtil.Instance.P1Health >= hp_before_check)
+            if (player_id == PlayerIdType.P1)
             {
-                PlayerDataUtil.Instance.PassCheckPointP1();
-                Instantiate(ps_pass_check_point).transform.position = this.transform.position;
+                    PlayerDataUtil.Instance.PassCheckPointP1();
+                    Instantiate(ps_pass_check_point).transform.position = this.transform.position;
+            }
+            else
+            {
+                    PlayerDataUtil.Instance.PassCheckPointP2();
+                    Instantiate(ps_pass_check_point).transform.position = this.transform.position;
             }
         }
         else
-        {
-            if (PlayerDataUtil.Instance.P2Health >= hp_before_check)
-            {
-                PlayerDataUtil.Instance.PassCheckPointP2();
-                Instantiate(ps_pass_check_point).transform.position = this.transform.position;
-            }
-        }
+            can_pass_check_point = true;
     }
 }

@@ -1214,8 +1214,7 @@ MonoBehaviour:
   squat_buffer_multiplier: 0.2
   attack_time_default: 1
   attack_buffer_multiplier: 0.2
-  catching_time_default: 1
-  catching_buffer_multiplier: 0.2
+  catching_time_default: 0.7
   catched: 0
   catching_player: {fileID: 0}
   catching_offset: {x: 1, y: 1, z: 1}
@@ -2009,8 +2008,7 @@ MonoBehaviour:
   squat_buffer_multiplier: 0.2
   attack_time_default: 1
   attack_buffer_multiplier: 0.2
-  catching_time_default: 1
-  catching_buffer_multiplier: 0.2
+  catching_time_default: 0.7
   catched: 0
   catching_player: {fileID: 0}
   catching_offset: {x: 1, y: 1, z: 1}

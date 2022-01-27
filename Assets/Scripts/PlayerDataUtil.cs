@@ -65,7 +65,7 @@ public class PlayerDataUtil : MonoBehaviour
         if (!hitted)
         {
             ++counter;
-            score += counter / 10 + 1;
+            score += counter / 60 + 1;
         }
         else
         {
@@ -80,13 +80,19 @@ public class PlayerDataUtil : MonoBehaviour
     {
         counter_p1++;
         score += (counter_p1) * 5;
-        score_text.text = score.ToString();
+        RefreshScore();
     }
     public void PassCheckPointP2()
     {
         counter_p2++;
         score += (counter_p2) * 5;
+        RefreshScore();
+    }
+
+    void RefreshScore(){
         score_text.text = score.ToString();
+        score_text.transform.localScale = Vector3.one * 1.5f;
+        score_text.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart);
     }
 
     public void ResetCounterP1()
