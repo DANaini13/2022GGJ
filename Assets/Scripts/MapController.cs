@@ -12,7 +12,7 @@ public class MapController : MonoBehaviour
     public float speed = 5.0f;
     public float speed_min = 5.0f;
     public float speed_max = 30.0f;
-    public float speed_hurt_multiplier = 0.75f;      //受伤后速度乘数
+    public float speed_hurt_multiplier = 0.85f;      //受伤后速度乘数
     public float map_add_speed_duration = 1.0f;     //加速频率
     public float map_add_speed_value = 0.5f;        //每次速度增加的值
     public GameObject ps_room_1;
