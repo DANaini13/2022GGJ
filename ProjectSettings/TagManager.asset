@@ -7,6 +7,7 @@ TagManager:
   - tool
   - breakable
   - block
+  - checkPoint
   layers:
   - Default
   - TransparentFX

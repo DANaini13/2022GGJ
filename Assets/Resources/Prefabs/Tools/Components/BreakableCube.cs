@@ -5,6 +5,6 @@ public class BreakableCube : MonoBehaviour
 {
     public void OnBreak()
     {
-        transform.parent.GetComponent<Breakable>().Break();
+        transform.parent.parent.GetComponent<Breakable>().Break();
     }
 }

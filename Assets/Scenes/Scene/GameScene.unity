@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1206,16 +1206,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jump_time: 0.8
+  jump_time_default: 1
+  jump_buffer_multiplier: 0.2
   jump_height: 5
   jump_to_squat_time: 0.05
-  squat_time: 1
-  squat_repeat_time: 0.3
-  attack_time: 0.5
-  catching_time: 2
+  squat_time_default: 1
+  squat_buffer_multiplier: 0.2
+  attack_time_default: 1
+  attack_buffer_multiplier: 0.2
+  catching_time_default: 1
+  catching_buffer_multiplier: 0.2
   catched: 0
   catching_player: {fileID: 0}
   catching_offset: {x: 1, y: 1, z: 1}
+  ps_pass_check_point: {fileID: 1730087086875077604, guid: f84be40b463d47f498117ed2c304b080, type: 3}
   idle_pos: {x: 0, y: 0, z: 0}
   hurt_amount: 10
 --- !u!65 &336471720
@@ -1997,16 +2001,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jump_time: 0.8
+  jump_time_default: 1
+  jump_buffer_multiplier: 0.2
   jump_height: 5
   jump_to_squat_time: 0.05
-  squat_time: 1
-  squat_repeat_time: 0.3
-  attack_time: 0.5
-  catching_time: 2
+  squat_time_default: 1
+  squat_buffer_multiplier: 0.2
+  attack_time_default: 1
+  attack_buffer_multiplier: 0.2
+  catching_time_default: 1
+  catching_buffer_multiplier: 0.2
   catched: 0
   catching_player: {fileID: 0}
   catching_offset: {x: 1, y: 1, z: 1}
+  ps_pass_check_point: {fileID: 1730087086875077604, guid: f84be40b463d47f498117ed2c304b080, type: 3}
   idle_pos: {x: 0, y: 0, z: 0}
   hurt_amount: 10
 --- !u!1001 &567316488
@@ -4794,6 +4802,8 @@ MonoBehaviour:
   p2_slider: {fileID: 334676707}
   score: 0
   counter: 0
+  counter_p1: 0
+  counter_p2: 0
   score_add_duration: 0.5
   score_text: {fileID: 647397464}
   gameover_score_text: {fileID: 880374517}
@@ -5512,7 +5522,7 @@ MonoBehaviour:
   empty_count: 2
   speed: 5
   speed_min: 5
-  speed_max: 40
+  speed_max: 30
   speed_hurt_multiplier: 0.75
   map_add_speed_duration: 1
   map_add_speed_value: 0.5

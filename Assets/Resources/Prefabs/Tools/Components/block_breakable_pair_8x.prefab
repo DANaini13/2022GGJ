@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5191818423978028308}
   m_Layer: 0
-  m_Name: block_breakable_pair 1
+  m_Name: block_breakable_pair_8x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,10 +465,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: block_breakable_pair (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 231002258560029447, guid: e78776f6402ffb04eb4f09b3d82b7833, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 249befa0cc6b89e4fa37f28bdd45f4fe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e78776f6402ffb04eb4f09b3d82b7833, type: 3}
 --- !u!4 &4450794675741703950 stripped

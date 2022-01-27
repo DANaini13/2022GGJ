@@ -5,18 +5,21 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class PlayerDataUtil: MonoBehaviour
+public class PlayerDataUtil : MonoBehaviour
 {
     public GameObject game_over_img;
     public Slider p1_slider;
     public Slider p2_slider;
     public int score = 0;
     public int counter = 0;
+
+    public int counter_p1;
+    public int counter_p2;
     public float score_add_duration = 1f;
     public Text score_text;
     public Text gameover_score_text;
     public bool health_still = false;
-    
+
     static public PlayerDataUtil Instance;
 
     private void Awake()
@@ -62,7 +65,7 @@ public class PlayerDataUtil: MonoBehaviour
         if (!hitted)
         {
             ++counter;
-            score += counter/10 + 1;
+            score += counter / 10 + 1;
         }
         else
         {
@@ -71,6 +74,29 @@ public class PlayerDataUtil: MonoBehaviour
 
         hitted = false;
         score_text.text = score.ToString();
+    }
+
+    public void PassCheckPointP1()
+    {
+        counter_p1++;
+        score += (counter_p1) * 5;
+        score_text.text = score.ToString();
+    }
+    public void PassCheckPointP2()
+    {
+        counter_p2++;
+        score += (counter_p2) * 5;
+        score_text.text = score.ToString();
+    }
+
+    public void ResetCounterP1()
+    {
+        counter_p1 = 0;
+    }
+
+    public void ResetCounterP2()
+    {
+        counter_p2 = 0;
     }
 
     private int p1_health = 100;
@@ -101,7 +127,7 @@ public class PlayerDataUtil: MonoBehaviour
             p1_slider.value = p1_health / 100.0f;
         }
     }
-    
+
     public int P2Health
     {
         get
