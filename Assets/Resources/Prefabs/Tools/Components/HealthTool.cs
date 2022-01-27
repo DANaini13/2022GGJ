@@ -1,17 +1,9 @@
-using System;
 using UnityEngine;
 
 
 public class SceneTool : MonoBehaviour
 {
-    public AudioClip audio_clip;
     public ParticleSystem pick_ps;
-    private AudioSource _as;
-
-    private void Awake()
-    {
-        _as = GetComponent<AudioSource>();
-    }
 
     public void PlayAudio()
     {
@@ -33,5 +25,5 @@ public class HealthTool : SceneTool
         else
             PlayerDataUtil.Instance.P2Health += 5;
         GameObject.Destroy(gameObject);
-    } 
+    }
 }

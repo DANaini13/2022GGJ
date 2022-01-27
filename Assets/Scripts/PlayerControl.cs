@@ -308,16 +308,23 @@ public class PlayerControl : MonoBehaviour
         {
             if (player_id == PlayerIdType.P1)
             {
-                    PlayerDataUtil.Instance.PassCheckPointP1();
+                    PlayerDataUtil.Instance.AddCounterP1(5);
                     Instantiate(ps_pass_check_point).transform.position = this.transform.position;
             }
             else
             {
-                    PlayerDataUtil.Instance.PassCheckPointP2();
+                    PlayerDataUtil.Instance.AddCounterP2(5);
                     Instantiate(ps_pass_check_point).transform.position = this.transform.position;
             }
         }
         else
             can_pass_check_point = true;
+    }
+
+    public void PickCoin(){
+        if (player_id == PlayerIdType.P1)
+                    PlayerDataUtil.Instance.AddCounterP1(1);
+            else
+                    PlayerDataUtil.Instance.AddCounterP2(1);
     }
 }

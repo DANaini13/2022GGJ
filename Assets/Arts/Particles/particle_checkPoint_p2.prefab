@@ -19806,11 +19806,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 6a27ef169991f9548b597212d9c04321, type: 3}
-  - {fileID: 8300000, guid: eacb9040e89679744ab0d53b652886fb, type: 3}
-  - {fileID: 8300000, guid: bbc4ac146e4c66440be585efb5f2dd09, type: 3}
-  - {fileID: 8300000, guid: 9cb72a25381f70445937877a70e39f7b, type: 3}
-  - {fileID: 8300000, guid: 4a089ca99b62bd94ca682fbce30f1954, type: 3}
+  - {fileID: 8300000, guid: b06a7bd1d7016354f95f33d996219cff, type: 3}
+  - {fileID: 8300000, guid: 8f72dca6797a418409369dcd9c7cbe20, type: 3}
+  - {fileID: 8300000, guid: 453624b089338444fba6c1facf9cb113, type: 3}
+  - {fileID: 8300000, guid: 0b333559863ce8a41803567f87d01d44, type: 3}
+  - {fileID: 8300000, guid: c99b543d3fb4ef4488a24640adcc5d8f, type: 3}
+  - {fileID: 8300000, guid: 003a4595aff1a1f498acb184c88caed1, type: 3}
 --- !u!1 &5839286797005204046
 GameObject:
   m_ObjectHideFlags: 0

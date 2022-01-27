@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7690d617c6ca4d71ae90af4a0c080e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio_clip: {fileID: 8300000, guid: c6843f1c57280f044ab32bebdf04df52, type: 3}
   pick_ps: {fileID: 1730087086875077604, guid: f468696d93a8da54cb2456c649d992cd, type: 3}
 --- !u!111 &-603757811714199877
 Animation:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6863603430459334114}
   - component: {fileID: 2452454402497858939}
   m_Layer: 0
-  m_Name: random_001
+  m_Name: random_001 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,6 +55,7 @@ MonoBehaviour:
   tool_count: 0
   use_even_count: 0
   repeat_chance: 0
+  coin_prefab: {fileID: 3378182538132132345, guid: 7950d08014c71dd4497d815858246500, type: 3}
 --- !u!1001 &2238692848371143180
 PrefabInstance:
   m_ObjectHideFlags: 0

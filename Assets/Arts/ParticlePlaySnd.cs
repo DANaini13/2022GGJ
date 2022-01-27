@@ -8,14 +8,8 @@ public class ParticlePlaySnd : MonoBehaviour
     void Start()
     {
         AudioSource audio = this.gameObject.GetComponent<AudioSource>();
-        audio.pitch = Random.Range(0.5f, 1.5f);
+        // audio.pitch = Random.Range(0.5f, 1.5f);
         audio.clip = clips[Random.Range(0, clips.Length)];
         audio.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

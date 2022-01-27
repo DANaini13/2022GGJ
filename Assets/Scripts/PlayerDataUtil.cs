@@ -76,20 +76,21 @@ public class PlayerDataUtil : MonoBehaviour
         score_text.text = score.ToString();
     }
 
-    public void PassCheckPointP1()
+    public void AddCounterP1(int value)
     {
-        counter_p1++;
-        score += (counter_p1) * 5;
+        counter_p1 += value;
+        score += (counter_p1) * 2;
         RefreshScore();
     }
-    public void PassCheckPointP2()
+    public void AddCounterP2(int value)
     {
-        counter_p2++;
-        score += (counter_p2) * 5;
+        counter_p2 += value;
+        score += (counter_p2) * 2;
         RefreshScore();
     }
 
-    void RefreshScore(){
+    void RefreshScore()
+    {
         score_text.text = score.ToString();
         score_text.transform.localScale = Vector3.one * 1.5f;
         score_text.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart);

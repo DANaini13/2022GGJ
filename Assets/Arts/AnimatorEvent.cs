@@ -11,16 +11,22 @@ public class AnimatorEvent : MonoBehaviour
     public delegate void AnimationEventCallBack(string clip_name);
     public AnimationEventCallBack on_clip_finished = null;
     public AnimationEventCallBack on_clip_start = null;
+    public AudioClip[] hurt_clips;
 
     public void PlayPS(int index)
     {
         ps[index].Play();
     }
-    
+
     public void PlaySnd(int index)
     {
         if (index == 0) return;
         audioS.PlayOneShot(clips[index]);
+    }
+
+    public void PlayHurtSnd()
+    {
+        audioS.PlayOneShot(hurt_clips[Random.Range(0, hurt_clips.Length)]);
     }
 
     private int rollCount = 0;
