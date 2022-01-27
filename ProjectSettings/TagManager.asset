@@ -9,6 +9,7 @@ TagManager:
   - block
   - checkPoint
   - catchBlock
+  - startBlock
   layers:
   - Default
   - TransparentFX

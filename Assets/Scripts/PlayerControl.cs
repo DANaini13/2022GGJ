@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -214,7 +215,7 @@ public class PlayerControl : MonoBehaviour
         // 检测攻击距离内的方块
         int layer = 1 << LayerMask.NameToLayer("breakable");
         //射线中心点(就是球的中心点) 半径 层级 一般技能用这个
-        Collider[] cols = Physics.OverlapSphere(transform.position, 3.5f, layer);
+        Collider[] cols = Physics.OverlapSphere(transform.position, 5f, layer);
         for (int i = 0; i < cols.Length; i++)
         {
             if (!cols[i].CompareTag("breakable"))
@@ -266,6 +267,11 @@ public class PlayerControl : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) return;
         if (other.gameObject.CompareTag("tool")) return;
+        if (other.gameObject.CompareTag("startBlock"))
+        {
+            PlayerDataUtil.Instance.TutorialEnd();
+            MapController.instance.TutorialEnd();
+        }
         if (other.gameObject.CompareTag("checkPoint"))
         {
             if (Time.fixedTime - last_pass_cp_time < 0.25f) can_pass_check_point = false;//距离上次离开检测点时间太短时，关闭判断（通常出现在吸附结束时又进入了判定点）
@@ -308,23 +314,24 @@ public class PlayerControl : MonoBehaviour
         {
             if (player_id == PlayerIdType.P1)
             {
-                    PlayerDataUtil.Instance.AddCounterP1(5);
-                    Instantiate(ps_pass_check_point).transform.position = this.transform.position;
+                PlayerDataUtil.Instance.AddCounterP1(5);
+                Instantiate(ps_pass_check_point).transform.position = this.transform.position;
             }
             else
             {
-                    PlayerDataUtil.Instance.AddCounterP2(5);
-                    Instantiate(ps_pass_check_point).transform.position = this.transform.position;
+                PlayerDataUtil.Instance.AddCounterP2(5);
+                Instantiate(ps_pass_check_point).transform.position = this.transform.position;
             }
         }
         else
             can_pass_check_point = true;
     }
 
-    public void PickCoin(){
+    public void PickCoin()
+    {
         if (player_id == PlayerIdType.P1)
-                    PlayerDataUtil.Instance.AddCounterP1(1);
-            else
-                    PlayerDataUtil.Instance.AddCounterP2(1);
+            PlayerDataUtil.Instance.AddCounterP1(1);
+        else
+            PlayerDataUtil.Instance.AddCounterP2(1);
     }
 }

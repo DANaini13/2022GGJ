@@ -18,9 +18,13 @@ public class PlayerDataUtil : MonoBehaviour
     public float score_add_duration = 1f;
     public Text score_text;
     public Text gameover_score_text;
+    public Text combo_text_p1;
+    public Text combo_text_p2;
     public bool health_still = false;
 
     static public PlayerDataUtil Instance;
+
+    private bool is_tutorial_end = false;
 
     private void Awake()
     {
@@ -60,6 +64,7 @@ public class PlayerDataUtil : MonoBehaviour
     private float last_score_check_time = 0;
     private void CounterCheck()
     {
+        if (!is_tutorial_end) return;
         if (Time.fixedTime - last_score_check_time < score_add_duration) return;
         last_score_check_time = Time.fixedTime;
         if (!hitted)
@@ -78,12 +83,14 @@ public class PlayerDataUtil : MonoBehaviour
 
     public void AddCounterP1(int value)
     {
+        if (!is_tutorial_end) return;
         counter_p1 += value;
         score += (counter_p1) * 2;
         RefreshScore();
     }
     public void AddCounterP2(int value)
     {
+        if (!is_tutorial_end) return;
         counter_p2 += value;
         score += (counter_p2) * 2;
         RefreshScore();
@@ -92,8 +99,17 @@ public class PlayerDataUtil : MonoBehaviour
     void RefreshScore()
     {
         score_text.text = score.ToString();
-        score_text.transform.localScale = Vector3.one * 1.5f;
-        score_text.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart);
+        score_text.transform.localScale = Vector3.one;
+        score_text.transform.DOScale(Vector3.one * 1.5f, 0.05f).SetEase(Ease.InQuart);
+        score_text.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart).SetDelay(0.05f);
+        combo_text_p1.text = counter_p1.ToString();
+        combo_text_p1.transform.localScale = Vector3.one;
+        combo_text_p1.transform.DOScale(Vector3.one * 1.5f, 0.05f).SetEase(Ease.InQuart);
+        combo_text_p1.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart).SetDelay(0.05f);
+        combo_text_p2.text = counter_p2.ToString();
+        combo_text_p2.transform.localScale = Vector3.one;
+        combo_text_p2.transform.DOScale(Vector3.one * 1.5f, 0.05f).SetEase(Ease.InQuart);
+        combo_text_p2.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart).SetDelay(0.05f);
     }
 
     public void ResetCounterP1()
@@ -159,5 +175,11 @@ public class PlayerDataUtil : MonoBehaviour
 
             p2_slider.value = p2_health / 100.0f;
         }
+    }
+
+    public void TutorialEnd()
+    {
+        if (is_tutorial_end) return;
+        is_tutorial_end = true;
     }
 }

@@ -99,4 +99,4 @@ MonoBehaviour:
   - {fileID: 3378182538132132345, guid: 96310102c2b634f839f3bdaf49766c62, type: 3}
   - {fileID: 4252849359523238773, guid: 326d01fdbd54840c08a3ca0cb4948b3c, type: 3}
   tangSengIndex: 0
-  chance: 20
+  chance: 15

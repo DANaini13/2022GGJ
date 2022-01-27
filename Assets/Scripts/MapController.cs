@@ -6,6 +6,7 @@ public class MapController : MonoBehaviour
 {
     public static MapController instance;
     public GameObject empty_unit_prefab;
+    public GameObject[] first_unit_prefabs;
     public float unit_width = 60;
     public int unit_count = 5;
     public int empty_count = 0;
@@ -21,6 +22,7 @@ public class MapController : MonoBehaviour
     private GameObject[] room_prefab_list;
     private Queue<GameObject> current_unit_list;
     private Queue<GameObject> current_room_list;
+    private bool is_tutorial_end = false;
     private void Awake()
     {
         instance = this;
@@ -43,12 +45,13 @@ public class MapController : MonoBehaviour
         current_room_list = new Queue<GameObject>();
         // 先把list填满
         int start_index = 1;
+        if (unit_count < first_unit_prefabs.Length) unit_count = first_unit_prefabs.Length;
         for (int i = 0; i < unit_count; i++)
         {
             GameObject prefab = null;
-            if (i < empty_count)
+            if (i < first_unit_prefabs.Length)
             {
-                prefab = empty_unit_prefab;
+                prefab = first_unit_prefabs[i];
             }
             else
             {
@@ -79,7 +82,7 @@ public class MapController : MonoBehaviour
         //超出距离，销毁旧道路，生成新的道路
         if (last_update_x - transform.position.x < unit_width) return;
         var deleting = current_unit_list.Dequeue();
-        int unit_index = unit_repeat_index >= 0 ? unit_repeat_index:Random.Range(0, unit_prefab_list.Length);
+        int unit_index = unit_repeat_index >= 0 ? unit_repeat_index : Random.Range(0, unit_prefab_list.Length);
         var prefab = unit_prefab_list[unit_index];
         var unit = Instantiate(prefab, transform);
         unit.transform.position = new Vector3(deleting.transform.position.x + unit_width * unit_count, 0, 0);
@@ -124,5 +127,12 @@ public class MapController : MonoBehaviour
     public int GetCurDifficulty()
     {
         return Mathf.RoundToInt((speed - speed_min) / (speed_max - speed_min) * 100.0f);
+    }
+
+    public void TutorialEnd()
+    {
+        if (is_tutorial_end) return;
+        speed = speed_min;
+        is_tutorial_end = true;
     }
 }

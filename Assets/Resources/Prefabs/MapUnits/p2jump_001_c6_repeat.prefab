@@ -51,6 +51,11 @@ MonoBehaviour:
   use_even_count: 0
   repeat_chance: 33
   coin_prefab: {fileID: 3378182538132132345, guid: 7950d08014c71dd4497d815858246500, type: 3}
+  item_prefabs:
+  - {fileID: 8362834555856231315, guid: fe3f5bf8f0c3b41ee8afb043fa5cb18c, type: 3}
+  - {fileID: 3378182538132132345, guid: 96310102c2b634f839f3bdaf49766c62, type: 3}
+  - {fileID: 4252849359523238773, guid: 326d01fdbd54840c08a3ca0cb4948b3c, type: 3}
+  coin_change_chance: 5
 --- !u!1001 &2238692848371143180
 PrefabInstance:
   m_ObjectHideFlags: 0

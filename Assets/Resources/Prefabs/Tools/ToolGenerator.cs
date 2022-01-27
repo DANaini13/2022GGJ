@@ -16,6 +16,11 @@ public class ToolGenerator : MonoBehaviour
     public int repeat_chance = 0;
     [Header("金币")]
     public Transform coin_prefab;
+    [Header("道具")]
+    public Transform[] item_prefabs;
+    [Header("道具替换金币的概率0-100（最多替换1个）")]
+    public int coin_change_chance = 5;
+    private bool is_coin_changed = false;
     private int difficulty_chance = 50;     //难度影响数量的几率（0-100）
     private int tool_min_count = 2;
     private int tool_max_count = 6;
@@ -72,7 +77,17 @@ public class ToolGenerator : MonoBehaviour
                 if (i > tool_last_pos + coin_between_tool && i < tool_cur_pos - coin_between_tool)
                 {
                     if (!coin_prefab) continue;
-                    Transform coin = Instantiate(coin_prefab, this.transform);
+                    Transform prefab = coin_prefab;
+                    if (!is_coin_changed)
+                    {
+                        if (item_prefabs.Length <= 0) continue;
+                        if (Random.Range(0, 100) < coin_change_chance)
+                        {
+                            prefab = item_prefabs[Random.Range(0, item_prefabs.Length)];
+                            is_coin_changed = true;
+                        }
+                    }
+                    Transform coin = Instantiate(prefab, this.transform);
                     coin.localPosition = new Vector3(i + 0.5f, 1f, 0f);
 
                     coin = Instantiate(coin_prefab, this.transform);
