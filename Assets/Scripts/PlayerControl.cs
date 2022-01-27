@@ -20,26 +20,32 @@ public class PlayerControl : MonoBehaviour
     public KeyCode attack_key;
     public AnimationCurve jump_curve;
     private float jump_time;
-    public float jump_time_default = 0.7f;
-    public float jump_buffer_multiplier = 0.15f;//跳跃时间还剩余多少百分比时可以再次跳跃
-    public float jump_height = 1;
-    public float jump_to_squat_time = 0.1f;
+    public float jump_time_default = 1f;
+    public float jump_buffer_multiplier = 0.2f;//跳跃时间还剩余多少百分比时可以再次跳跃
+    public float jump_height = 5;
+    public float jump_to_squat_time = 0.05f;
     private float squat_time;
-    public float squat_time_default = 0.7f;
-    public float squat_buffer_multiplier = 0.15f;//下蹲时间还剩余多少百分比时可以再次下蹲
-    public float attack_time = 0.5f;
-    public float catching_time = 1.0f;
+    public float squat_time_default = 1f;
+    public float squat_buffer_multiplier = 0.2f;//下蹲时间还剩余多少百分比时可以再次下蹲
+    private float attack_time;
+    public float attack_time_default = 1f;
+    public float attack_buffer_multiplier = 0.2f;//再攻击缓冲
+    private float catching_time;
+    public float catching_time_default = 1.0f;
     public bool catched = false;
     public PlayerControl catching_player = null;
     public Vector3 catching_offset = new Vector3(-0.5f, 0, 0);
+    public ParticleSystem ps_pass_check_point;
     private Animator animator;
-    private float squat_timer, jump_timer;
+    private float squat_timer, jump_timer, attack_timer;
     private Vector3 original_collider_size;
 
     private void Awake()
     {
         jump_time = jump_time_default;
         squat_time = squat_time_default;
+        attack_time = attack_time_default;
+        catching_time = catching_time_default;
         box_collider = GetComponent<BoxCollider>();
         original_collider_size = box_collider.size;//在初始化时记录，避免下蹲期间多次下蹲导致尺寸错误
         idle_pos = transform.position;
@@ -88,10 +94,13 @@ public class PlayerControl : MonoBehaviour
 
         if (squating) squat_timer += Time.deltaTime;
         if (jumping) jump_timer += Time.deltaTime;
+        if (attacking) attack_timer += Time.deltaTime;
 
         //刷新跳跃和下蹲速度
-        squat_time = (1.0f - MapController.instance.GetCurDifficulty() / 110.0f) * squat_time_default;
-        jump_time = (1.0f - MapController.instance.GetCurDifficulty() / 110.0f) * jump_time_default;
+        squat_time = (1.0f - MapController.instance.GetCurDifficulty() / 130.0f) * squat_time_default;
+        jump_time = (1.0f - MapController.instance.GetCurDifficulty() / 130.0f) * jump_time_default;
+        attack_time = (1.0f - MapController.instance.GetCurDifficulty() / 130.0f) * attack_time_default;
+        catching_time = (1.0f - MapController.instance.GetCurDifficulty() / 130.0f) * catching_time_default;
     }
 
     private float step_audio_cd = 0.1f;
@@ -147,7 +156,7 @@ public class PlayerControl : MonoBehaviour
     private float jump_start_time = 0;
     public void Jump()
     {
-        if (jumping && jump_timer < (jump_time * (1 - jump_buffer_multiplier))) return;
+        if (jumping && jump_timer < (jump_time * (1.0f - jump_buffer_multiplier))) return;
         jumping = true;
         jump_timer = 0f;
         animator.SetFloat("jumpSpeed", 1.0f / jump_time * 0.5f);
@@ -169,7 +178,7 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
-            if (squating && squat_timer < (squat_time * (1 - squat_buffer_multiplier))) return;
+            if (squating && squat_timer < (squat_time * (1.0f - squat_buffer_multiplier))) return;
             DoSquat();
         }
     }
@@ -197,8 +206,9 @@ public class PlayerControl : MonoBehaviour
     private bool attacking = false;
     public void Attack()
     {
-        if (attacking) return;
+        if (attacking && attack_timer < attack_time * (1.0f - attack_buffer_multiplier)) return;
         attacking = true;
+        attack_timer = 0f;
         animator.SetFloat("hitSpeed", 1.0f / attack_time * 0.5f);
         animator.SetTrigger("hit");
         // 检测攻击距离内的方块
@@ -250,21 +260,64 @@ public class PlayerControl : MonoBehaviour
     private float hurt_cd = 0.5f;
     public int hurt_amount = 1;
     private float last_hurt_time = 0;
+    private bool can_pass_check_point;
+    private float last_pass_cp_time;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) return;
         if (other.gameObject.CompareTag("tool")) return;
+        if (other.gameObject.CompareTag("checkPoint"))
+        {
+            if (Time.fixedTime - last_pass_cp_time < 0.25f) can_pass_check_point = false;//距离上次离开检测点时间太短时，关闭判断（通常出现在吸附结束时又进入了判定点）
+        }
+        BlockAnim bAnim = other.gameObject.GetComponent<BlockAnim>();
+        if (other.gameObject.CompareTag("catchBlock"))
+        {
+            if (bAnim)
+                bAnim.Rotate();
+        }
+
         if (!other.gameObject.CompareTag("block") && !other.gameObject.CompareTag("breakable"))
         {
             return;
         }
 
+        if (bAnim)
+            bAnim.Break();
+        can_pass_check_point = false;
         hurt_cd = 0.5f;
         if (Time.fixedTime - last_hurt_time < hurt_cd) return;
         if (player_id == PlayerIdType.P1)
+        {
             PlayerDataUtil.Instance.P1Health -= hurt_amount;
+            PlayerDataUtil.Instance.ResetCounterP1();
+        }
         else
+        {
             PlayerDataUtil.Instance.P2Health -= hurt_amount;
+            PlayerDataUtil.Instance.ResetCounterP2();
+        }
         last_hurt_time = Time.fixedTime;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.gameObject.CompareTag("checkPoint")) return;
+        last_pass_cp_time = Time.fixedTime;
+        if (can_pass_check_point)
+        {
+            if (player_id == PlayerIdType.P1)
+            {
+                    PlayerDataUtil.Instance.PassCheckPointP1();
+                    Instantiate(ps_pass_check_point).transform.position = this.transform.position;
+            }
+            else
+            {
+                    PlayerDataUtil.Instance.PassCheckPointP2();
+                    Instantiate(ps_pass_check_point).transform.position = this.transform.position;
+            }
+        }
+        else
+            can_pass_check_point = true;
     }
 }

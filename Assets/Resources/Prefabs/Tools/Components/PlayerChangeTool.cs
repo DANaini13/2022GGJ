@@ -7,7 +7,7 @@ public class PlayerChangeTool : SceneTool
         if (!other.gameObject.CompareTag("Player")) return;
         PlayAudio();
         PlayerManager.instance.SwapPlayer();
-        PlayerMask.instance.Invert();
+        // PlayerMask.instance.Invert();
         GameObject.Destroy(gameObject);
     } 
 }
