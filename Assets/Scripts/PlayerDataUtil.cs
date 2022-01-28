@@ -43,29 +43,39 @@ public class PlayerDataUtil : MonoBehaviour
         if (game_over)
         {
             game_over = false;
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
+            MapController.instance.speed = 0f;
+            MapController.instance.is_game_over = true;
 
-            achievement_text.transform.localScale = Vector3.zero;
             game_over_img.SetActive(true);
             gameover_score_text.text = "SCORE: " + score.ToString();
+            best_combo_text.text = "最高Combo: " + best_combo.ToString();
+            survive_text.text = "你们在大圣手下活了" + Mathf.RoundToInt((Time.fixedTime - start_time) * 10f) * 0.1f + "秒！";
+
             if (best_combo < 10)
                 achievement_text.text = "有待提高！";
             else if (best_combo < 30)
                 achievement_text.text = "再接再厉！";
-            else if (best_combo < 50)
+            else if (best_combo < 60)
                 achievement_text.text = "游刃有余！";
-            else if (best_combo < 70)
-                achievement_text.text = "精彩绝伦！";
             else if (best_combo < 90)
+                achievement_text.text = "精彩绝伦！";
+            else if (best_combo < 120)
                 achievement_text.text = "出神入化！";
-            else if (best_combo < 110)
+            else if (best_combo < 150)
                 achievement_text.text = "登峰造极！";
-            else if (best_combo >= 110)
+            else if (best_combo >= 150)
                 achievement_text.text = "国士无双！";
-            achievement_text.transform.DOScale(Vector3.one * 5, 0.01f).SetDelay(1f);
-            achievement_text.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart).SetDelay(1.01f);
-            best_combo_text.text = "最高Combo: " + best_combo.ToString();
-            survive_text.text = "你们在大圣手下活了" + (Time.fixedTime - start_time) + "秒！";
+
+            gameover_score_text.transform.localScale = Vector3.zero;
+            best_combo_text.transform.localScale = Vector3.zero;
+            survive_text.transform.localScale = Vector3.zero;
+            achievement_text.transform.localScale = Vector3.zero;
+            gameover_score_text.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.InQuart);
+            best_combo_text.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.InQuart).SetDelay(0.4f);
+            survive_text.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.InQuart).SetDelay(0.8f);
+            achievement_text.transform.DOScale(Vector3.one * 5, 0.01f).SetDelay(1.5f);
+            achievement_text.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart).SetDelay(1.51f);
         }
     }
 

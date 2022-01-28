@@ -23,6 +23,7 @@ public class MapController : MonoBehaviour
     private Queue<GameObject> current_unit_list;
     private Queue<GameObject> current_room_list;
     private bool is_tutorial_end = false;
+    public bool is_game_over = false;
     private void Awake()
     {
         instance = this;
@@ -112,6 +113,7 @@ public class MapController : MonoBehaviour
     private float last_add_speed_time = 0;
     private void CheckAddSpeed()
     {
+        if (is_game_over) return;
         if (Time.fixedTime - last_add_speed_time < map_add_speed_duration) return;
         last_add_speed_time = Time.fixedTime;
         speed += map_add_speed_value;
