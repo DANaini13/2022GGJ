@@ -44,6 +44,8 @@ public class PlayerDataUtil : MonoBehaviour
         {
             game_over = false;
             Time.timeScale = 0;
+
+            achievement_text.transform.localScale = Vector3.zero;
             game_over_img.SetActive(true);
             gameover_score_text.text = "SCORE: " + score.ToString();
             if (best_combo < 10)
@@ -60,6 +62,8 @@ public class PlayerDataUtil : MonoBehaviour
                 achievement_text.text = "登峰造极！";
             else if (best_combo >= 110)
                 achievement_text.text = "国士无双！";
+            achievement_text.transform.DOScale(Vector3.one * 5, 0.01f).SetDelay(1f);
+            achievement_text.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InQuart).SetDelay(1.01f);
             best_combo_text.text = "最高Combo: " + best_combo.ToString();
             survive_text.text = "你们在大圣手下活了" + (Time.fixedTime - start_time) + "秒！";
         }
