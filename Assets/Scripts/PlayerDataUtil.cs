@@ -21,10 +21,15 @@ public class PlayerDataUtil : MonoBehaviour
     public Text combo_text_p1;
     public Text combo_text_p2;
     public bool health_still = false;
+    public Text best_combo_text;
+    public Text survive_text;
+    public Text achievement_text;
+    private int best_combo;
 
     static public PlayerDataUtil Instance;
 
     private bool is_tutorial_end = false;
+    private float start_time;
 
     private void Awake()
     {
@@ -41,11 +46,31 @@ public class PlayerDataUtil : MonoBehaviour
             Time.timeScale = 0;
             game_over_img.SetActive(true);
             gameover_score_text.text = "SCORE: " + score.ToString();
-            DOVirtual.DelayedCall(3, () =>
-            {
-                SceneManager.LoadScene(0);
-            }).SetUpdate(true);
+            if (best_combo < 10)
+                achievement_text.text = "有待提高！";
+            else if (best_combo < 30)
+                achievement_text.text = "再接再厉！";
+            else if (best_combo < 50)
+                achievement_text.text = "游刃有余！";
+            else if (best_combo < 70)
+                achievement_text.text = "精彩绝伦！";
+            else if (best_combo < 90)
+                achievement_text.text = "出神入化！";
+            else if (best_combo < 110)
+                achievement_text.text = "登峰造极！";
+            else if (best_combo >= 110)
+                achievement_text.text = "国士无双！";
+            best_combo_text.text = "最高Combo: " + best_combo.ToString();
+            survive_text.text = "你们在大圣手下活了" + (Time.fixedTime - start_time) + "秒！";
         }
+    }
+
+    public void RestartGame()
+    {
+        DOVirtual.DelayedCall(0.1f, () =>
+        {
+            SceneManager.LoadScene(0);
+        }).SetUpdate(true);
     }
 
     private void FeverTimeCheck()
@@ -114,11 +139,13 @@ public class PlayerDataUtil : MonoBehaviour
 
     public void ResetCounterP1()
     {
+        if (counter_p1 > best_combo) best_combo = counter_p1;
         counter_p1 = 0;
     }
 
     public void ResetCounterP2()
     {
+        if (counter_p2 > best_combo) best_combo = counter_p1;
         counter_p2 = 0;
     }
 
@@ -181,5 +208,8 @@ public class PlayerDataUtil : MonoBehaviour
     {
         if (is_tutorial_end) return;
         is_tutorial_end = true;
+        start_time = Time.fixedTime;
+        P1Health = 100;
+        P2Health = 100;
     }
 }
