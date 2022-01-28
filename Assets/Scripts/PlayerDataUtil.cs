@@ -36,6 +36,7 @@ public class PlayerDataUtil : MonoBehaviour
         Instance = this;
     }
 
+    private bool is_game_end = false;
     private void Update()
     {
         CounterCheck();
@@ -43,6 +44,8 @@ public class PlayerDataUtil : MonoBehaviour
         if (game_over)
         {
             game_over = false;
+            if (is_game_end) return;
+            is_game_end = true;
             // Time.timeScale = 0;
             MapController.instance.speed = 0f;
             MapController.instance.is_game_over = true;
